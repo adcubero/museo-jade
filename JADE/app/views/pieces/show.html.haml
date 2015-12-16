@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @piece.name
+%p
+  %b Description:
+  = @piece.description
+%p
+  %b Room:
+  = @piece.room
+%p
+  %b Showcase:
+  = @piece.showcase
+%p
+  %b Item:
+  = @piece.item
+
+= link_to 'Edit', edit_piece_path(@piece)
+\|
+= link_to 'Back', pieces_path

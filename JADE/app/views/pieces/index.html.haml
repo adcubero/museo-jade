@@ -1,0 +1,30 @@
+%h1 Listing pieces
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Room
+      %th Showcase
+      %th Item
+      %th
+      %th
+      %th
+
+  %tbody
+    - @pieces.each do |piece|
+      %tr
+        %td= piece.name
+        %td= piece.description
+        %td= piece.room
+        %td= piece.showcase
+        %td= piece.item
+
+        /%td= link_to 'Show', piece
+        /%td= link_to 'Edit', edit_piece_path(piece)
+        /%td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Piece', new_exhibition_piece_path(@exhibition)

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @exhibition.name
+%p
+  %b Description:
+  = @exhibition.description
+%p
+  %b Minidescription:
+  = @exhibition.miniDescription
+
+
+= link_to 'pieces', exhibition_pieces_path(@exhibition.id)
+\|
+= link_to 'Edit', edit_exhibition_path(@exhibition)
+\|
+= link_to 'Back', exhibitions_path
