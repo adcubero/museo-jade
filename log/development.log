@@ -1,0 +1,2170 @@
+  [1m[36m (98.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (24.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateItems (20151216074715)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151216074715"]]
+  [1m[35m (94.2ms)[0m  commit transaction
+Migrating to CreateExhibitions (20151216074818)
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35m (12.7ms)[0m  CREATE TABLE "exhibitions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "miniDescription" varchar, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_exhibitions_on_item_id" ON "exhibitions" ("item_id")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151216074818"]]
+  [1m[36m (21.2ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePieces (20151216074954)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "pieces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "room" varchar, "showcase" varchar, "item_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX "index_pieces_on_item_id" ON "pieces" ("item_id")
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151216074954"]]
+  [1m[35m (19.2ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+
+  [1m[36m (0.8ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddExhibitionToPiece (20151216075122)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "piece" ADD "exhibition_id" integer[0m
+SQLite3::SQLException: no such table: piece: ALTER TABLE "piece" ADD "exhibition_id" integer
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddExhibitionToPiece (20151216075122)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "pieces" ADD "exhibition_id" integer[0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "index_pieces_on_exhibition_id" ON "pieces" ("exhibition_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151216075122"]]
+  [1m[35m (6.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2015-12-16 02:31:41 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/railties-4.2.4/lib/rails/templates/rails/welcome/index.html.erb (4.9ms)
+Completed 200 OK in 91ms (Views: 75.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/exhibition" for 127.0.0.1 at 2015-12-16 02:31:49 -0600
+
+ActionController::RoutingError (No route matches [GET] "/exhibition"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (43.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (22.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (54.8ms)
+
+
+Started GET "/exhibition" for 127.0.0.1 at 2015-12-16 02:32:37 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/exhibition"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 02:32:41 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 2376ms (Views: 2316.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 02:32:44 -0600
+
+
+Started GET "/exhibitions/new" for 127.0.0.1 at 2015-12-16 02:32:46 -0600
+Processing by ExhibitionsController#new as HTML
+  Rendered exhibitions/_form.html.haml (98.9ms)
+  Rendered exhibitions/new.html.haml within layouts/application (103.9ms)
+Completed 200 OK in 161ms (Views: 154.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/exhibitions" for 127.0.0.1 at 2015-12-16 02:33:04 -0600
+Processing by ExhibitionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"izmIfftaipPF61j2p3PfE6KwA6HpnALzgVlk2fWXJUJUnrZUw3QjHzdcpCYusvH96Z6lKgXcrbmffhToMjncVg==", "exhibition"=>{"name"=>"JAde", "description"=>"sjsjs", "miniDescription"=>"jsjsjs", "item"=>""}, "commit"=>"Save"}
+Unpermitted parameter: item
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "exhibitions" ("name", "description", "miniDescription", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "JAde"], ["description", "sjsjs"], ["miniDescription", "jsjsjs"], ["created_at", "2015-12-16 08:33:04.532882"], ["updated_at", "2015-12-16 08:33:04.532882"]]
+  [1m[36m (17.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/1
+Completed 302 Found in 56ms (ActiveRecord: 18.2ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 02:33:04 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 92ms (Views: 43.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 02:33:06 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 62ms (Views: 61.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/new" for 127.0.0.1 at 2015-12-16 02:38:18 -0600
+Processing by ExhibitionsController#new as HTML
+  Rendered exhibitions/_form.html.haml (23.0ms)
+  Rendered exhibitions/new.html.haml within layouts/application (24.6ms)
+Completed 200 OK in 288ms (Views: 226.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/exhibitions" for 127.0.0.1 at 2015-12-16 02:38:24 -0600
+Processing by ExhibitionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zsMg4HI/FHj0uoWKXbySe3xY5VccKiVoxHs1/GssVAERZB7JShG99AYNeVrUfbyVN3ZD3PBqiiLaXEXNrIKtFQ==", "exhibition"=>{"name"=>"aa", "description"=>"aa", "miniDescription"=>"aa", "item"=>""}, "commit"=>"Save"}
+Unpermitted parameter: item
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "exhibitions" ("name", "description", "miniDescription", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "aa"], ["description", "aa"], ["miniDescription", "aa"], ["created_at", "2015-12-16 08:38:24.159355"], ["updated_at", "2015-12-16 08:38:24.159355"]]
+  [1m[35m (28.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/2
+Completed 302 Found in 36ms (ActiveRecord: 29.4ms)
+
+
+Started GET "/exhibitions/2" for 127.0.0.1 at 2015-12-16 02:38:24 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 61ms (Views: 58.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 02:41:56 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (101.4ms)
+Completed 200 OK in 567ms (Views: 527.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 02:41:57 -0600
+
+
+Started GET "/exhibitions/new" for 127.0.0.1 at 2015-12-16 02:41:59 -0600
+Processing by ExhibitionsController#new as HTML
+  Rendered exhibitions/_form.html.haml (55.8ms)
+  Rendered exhibitions/new.html.haml within layouts/application (60.2ms)
+Completed 200 OK in 116ms (Views: 114.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/exhibitions" for 127.0.0.1 at 2015-12-16 02:42:03 -0600
+Processing by ExhibitionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7e83E7xvpxyKcEQ6aQhw7guyuwRrir30nIIC4YRwDbwySAk6hEEOkHjHuOrgyV4AQJwdj4fKEr6CpXLQQ970qA==", "exhibition"=>{"name"=>"cc", "description"=>"cc", "miniDescription"=>"cc", "item"=>""}, "commit"=>"Save"}
+Unpermitted parameter: item
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "exhibitions" ("name", "description", "miniDescription", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "cc"], ["description", "cc"], ["miniDescription", "cc"], ["created_at", "2015-12-16 08:42:03.712720"], ["updated_at", "2015-12-16 08:42:03.712720"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/3
+Completed 302 Found in 44ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/exhibitions/3" for 127.0.0.1 at 2015-12-16 02:42:03 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered exhibitions/show.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 108ms (Views: 64.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 02:44:48 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 28ms (Views: 27.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 02:44:56 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 02:44:58 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 34ms (Views: 33.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 02:45:00 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 29ms (Views: 27.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 02:55:29 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (16.7ms)
+Completed 200 OK in 204ms (Views: 188.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 02:55:30 -0600
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 02:56:30 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 60ms (Views: 53.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 02:56:32 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 144ms (Views: 59.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/exhibitions/2" for 127.0.0.1 at 2015-12-16 02:56:40 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 42ms (Views: 41.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/2/pieces" for 127.0.0.1 at 2015-12-16 02:56:41 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 2]]
+  Rendered pieces/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 35ms (Views: 31.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/2/pieces/new" for 127.0.0.1 at 2015-12-16 02:56:42 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  Rendered pieces/_form.html.haml (27.5ms)
+  Rendered pieces/new.html.haml within layouts/application (139.3ms)
+Completed 500 Internal Server Error in 165ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f382d022378>:0x007f380c974410>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___1409275623210813029_69939350840440'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__3856437695429576551_69939350910580'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (36.8ms)
+
+
+Started GET "/exhibitions/2/pieces/new" for 127.0.0.1 at 2015-12-16 02:56:43 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  Rendered pieces/_form.html.haml (20.4ms)
+  Rendered pieces/new.html.haml within layouts/application (21.7ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f382d022378>:0x007f380d192ca0>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___1409275623210813029_69939357190640'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__3856437695429576551_69939357322560'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.6ms)
+
+
+Started GET "/exhibitions/2/pieces" for 127.0.0.1 at 2015-12-16 03:00:13 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 2]]
+  Rendered pieces/index.html.haml within layouts/application (4.4ms)
+Completed 200 OK in 71ms (Views: 66.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/2/pieces/new" for 127.0.0.1 at 2015-12-16 03:00:14 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  Rendered pieces/_form.html.haml (12.0ms)
+  Rendered pieces/new.html.haml within layouts/application (17.2ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f382d022378>:0x007f380cc8cf58>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___1409275623210813029_69939350840440'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__3856437695429576551_69939354647960'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.1ms)
+
+
+Started GET "/exhibitions/2/pieces/new" for 127.0.0.1 at 2015-12-16 03:00:14 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  Rendered pieces/_form.html.haml (15.2ms)
+  Rendered pieces/new.html.haml within layouts/application (16.8ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f382d022378>:0x007f382dc281b8>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___1409275623210813029_69939357190640'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__3856437695429576551_69939355383700'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (2.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.1ms)
+
+
+Started GET "/exhibitions/2/pieces" for 127.0.0.1 at 2015-12-16 03:00:26 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mPiece Load (2.4ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 2]]
+  Rendered pieces/index.html.haml within layouts/application (17.7ms)
+Completed 200 OK in 338ms (Views: 219.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/exhibitions/2/pieces" for 127.0.0.1 at 2015-12-16 03:00:27 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 2]]
+  Rendered pieces/index.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:00:27 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:00:27 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:00:28 -0600
+
+
+Started GET "/exhibitions/2/pieces/new" for 127.0.0.1 at 2015-12-16 03:00:29 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  Rendered pieces/_form.html.haml (23.1ms)
+  Rendered pieces/new.html.haml within layouts/application (27.7ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f3b4d238ce8>:0x007f3b3cfd1550>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml__4468015767889298112_69946337470460'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___697430392969792240_69946201436940'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (32.0ms)
+
+
+Started GET "/exhibitions/2/pieces/new" for 127.0.0.1 at 2015-12-16 03:00:29 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  Rendered pieces/_form.html.haml (15.4ms)
+  Rendered pieces/new.html.haml within layouts/application (16.7ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f3b4d238ce8>:0x007f3b3ddb72a0>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml__4468015767889298112_69946213028260'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___697430392969792240_69946208792020'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (35.9ms)
+
+
+Started GET "/exhibitions/2/pieces" for 127.0.0.1 at 2015-12-16 03:00:35 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"2"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 2]]
+  Rendered pieces/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 78ms (Views: 73.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 03:00:36 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (2.5ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (22.7ms)
+Completed 200 OK in 83ms (Views: 79.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 03:00:38 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 49ms (Views: 48.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (18.0ms)
+Completed 200 OK in 187ms (Views: 170.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:01:43 -0600
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 03:01:46 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 68ms (Views: 58.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:01:48 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (13.0ms)
+Completed 200 OK in 76ms (Views: 60.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:01:49 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  Rendered pieces/_form.html.haml (15.5ms)
+  Rendered pieces/new.html.haml within layouts/application (18.4ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007ff4854fae08>:0x007ff4860620c0>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml__641823504869468710_70344097531960'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___167626571594827021_70344098645780'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (31.2ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:01:49 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  Rendered pieces/_form.html.haml (31.2ms)
+  Rendered pieces/new.html.haml within layouts/application (34.9ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007ff4854fae08>:0x007ff497100b10>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml__641823504869468710_70344241380180'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___167626571594827021_70344241552180'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (42.8ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:02:14 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (8.4ms)
+Completed 200 OK in 66ms (Views: 63.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 50ms (Views: 47.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:02:16 -0600
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:02:17 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  Rendered pieces/_form.html.haml (14.8ms)
+  Rendered pieces/new.html.haml within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007ff4854fae08>:0x007ff48662efa8>):
+    1: = form_for @piece do |f|
+    2: 
+    3: 
+    4:   .field
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml__641823504869468710_70344101637880'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___167626571594827021_70344098645780'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (32.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (57.3ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:02:17 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  Rendered pieces/_form.html.haml (17.6ms)
+  Rendered pieces/new.html.haml within layouts/application (18.2ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007ff4854fae08>:0x007ff4864f5df8>):
+    1: = form_for @piece do |f|
+    2: 
+    3: 
+    4:   .field
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml__641823504869468710_70344101087180'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___167626571594827021_70344241552180'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (35.3ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:05:54 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (17.9ms)
+Completed 200 OK in 358ms (Views: 242.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:05:55 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 42ms (Views: 37.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:05:55 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:05:55 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:05:56 -0600
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:05:57 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/_form.html.haml (18.0ms)
+  Rendered pieces/new.html.haml within layouts/application (21.4ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007fe2a767f818>:0x007fe29500c678>):
+    1: = form_for @piece do |f|
+    2: 
+    3: 
+    4:   .field
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3992561692836050764_70305724450880'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___2974967428526488433_70305569525220'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.9ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:05:57 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/_form.html.haml (16.5ms)
+  Rendered pieces/new.html.haml within layouts/application (17.8ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007fe2a767f818>:0x007fe2965c4e48>):
+    1: = form_for @piece do |f|
+    2: 
+    3: 
+    4:   .field
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3992561692836050764_70305581053820'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___2974967428526488433_70305576795640'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:08:15 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (14.9ms)
+Completed 200 OK in 283ms (Views: 235.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:08:18 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  app/controllers/pieces_controller.rb:19:in `new'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (38.0ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:08:19 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  app/controllers/pieces_controller.rb:19:in `new'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (36.4ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:09:54 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (8.8ms)
+Completed 200 OK in 266ms (Views: 189.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 52ms (Views: 47.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:09:56 -0600
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:09:57 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+NoMethodError (undefined method `exhibition=' for #<Piece:0x007f96ed293958>):
+  app/controllers/pieces_controller.rb:19:in `new'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.7ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:09:57 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (2.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 2.3ms)
+
+NoMethodError (undefined method `exhibition=' for #<Piece:0x007f96ee12e508>):
+  app/controllers/pieces_controller.rb:19:in `new'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (32.5ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:10:51 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 89ms (Views: 74.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (8.0ms)
+Completed 200 OK in 292ms (Views: 230.9ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:00 -0600
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:11:01 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.2ms)
+
+NoMethodError (undefined method `exhibition' for #<Piece:0x007faacd2caae0>):
+  app/controllers/pieces_controller.rb:20:in `new'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (39.5ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:11:02 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms)
+
+NoMethodError (undefined method `exhibition' for #<Piece:0x007faacdd43558>):
+  app/controllers/pieces_controller.rb:20:in `new'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (32.0ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 191ms (Views: 142.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:11:58 -0600
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:12:00 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/_form.html.haml (39.2ms)
+  Rendered pieces/new.html.haml within layouts/application (44.2ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f64aa7b7be8>:0x007f6498095160>):
+    1: = form_for @piece do |f|
+    2: 
+    3: 
+    4:   .field
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3195388060762689525_70035166697600'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___1575387971124304606_70035012043780'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (38.2ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:12:00 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/_form.html.haml (16.6ms)
+  Rendered pieces/new.html.haml within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f64aa7b7be8>:0x007f6499cc0100>):
+    1: = form_for @piece do |f|
+    2: 
+    3: 
+    4:   .field
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3195388060762689525_70035026760420'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___1575387971124304606_70035031717660'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (14.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (32.7ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:13:23 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/_form.html.haml (27.3ms)
+  Rendered pieces/new.html.haml within layouts/application (28.0ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f64aa7b7be8>:0x007f649a0b27b8>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3195388060762689525_70035028888300'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml___1575387971124304606_70035031717660'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.6ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:20:29 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/_form.html.haml (21.4ms)
+  Rendered pieces/new.html.haml within layouts/application (27.2ms)
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f361ca42780>:0x007f361ca41ce0>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3908077201018457431_69935192269320'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__2629645895837047718_69935192553700'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.5ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:20:32 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/_form.html.haml (18.1ms)
+  Rendered pieces/new.html.haml within layouts/application (18.8ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f361ca42780>:0x007f361c0854b8>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3908077201018457431_69935192269320'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__2629645895837047718_69935192553700'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (19.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (36.6ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:21:26 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/_form.html.haml (31.4ms)
+  Rendered pieces/new.html.haml within layouts/application (36.4ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f361ca42780>:0x007f361c938a38>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3908077201018457431_69935192062380'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__2629645895837047718_69935192185560'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (79.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (44.3ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:21:28 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/_form.html.haml (17.6ms)
+  Rendered pieces/new.html.haml within layouts/application (18.5ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `pieces_path' for #<#<Class:0x007f361ca42780>:0x007f361bf063a8>):
+    1: = form_for @piece do |f|
+    2:   - if @piece.errors.any?
+    3:     #error_explanation
+    4:       %h2= "#{pluralize(@piece.errors.count, "error")} prohibited this piece from being saved:"
+  app/views/pieces/_form.html.haml:1:in `_app_views_pieces__form_html_haml___3908077201018457431_69935192062380'
+  app/views/pieces/new.html.haml:3:in `_app_views_pieces_new_html_haml__2629645895837047718_69935192185560'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.5ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:21:48 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/new.html.haml within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `id' for nil:NilClass):
+    2: 
+    3: 
+    4: 
+    5: = link_to 'Back', exhibition_pieces_path(@exhibition.id)
+  app/views/pieces/new.html.haml:5:in `_app_views_pieces_new_html_haml__2629645895837047718_69935191280560'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (32.9ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:22:17 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/new.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 229ms (Views: 222.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:22:17 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:22:18 -0600
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:22:19 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 96ms (Views: 82.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:22:21 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/new.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 51ms (Views: 50.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/_form.html.haml (104.4ms)
+  Rendered pieces/new.html.haml within layouts/application (106.0ms)
+Completed 200 OK in 138ms (Views: 136.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:26:09 -0600
+
+
+Started POST "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:26:18 -0600
+Processing by PiecesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IJVPhCB8xWxHPdfEKU++1cS+WJF7VcC8M9GtfXkHY2v/MnGtGFJs4LWKKxSgjpA7j5D+GpcVb/Yt9t1Mvqmafw==", "piece"=>{"name"=>"aa", "description"=>"aa", "room"=>"aa", "showcase"=>"aa", "item"=>""}, "commit"=>"Save", "exhibition_id"=>"1"}
+Unpermitted parameter: item
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "pieces" ("name", "description", "room", "showcase", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["name", "aa"], ["description", "aa"], ["room", "aa"], ["showcase", "aa"], ["exhibition_id", 1], ["created_at", "2015-12-16 09:26:18.186126"], ["updated_at", "2015-12-16 09:26:18.186126"]]
+  [1m[36m (15.7ms)[0m  [1mcommit transaction[0m
+Redirected to 
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 16.4ms)
+
+NoMethodError (undefined method `piece_url' for #<PiecesController:0x007f360e416298>):
+  app/controllers/pieces_controller.rb:35:in `block (2 levels) in create'
+  app/controllers/pieces_controller.rb:33:in `create'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (27.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.8ms)
+
+
+Started POST "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:28:07 -0600
+Processing by PiecesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IJVPhCB8xWxHPdfEKU++1cS+WJF7VcC8M9GtfXkHY2v/MnGtGFJs4LWKKxSgjpA7j5D+GpcVb/Yt9t1Mvqmafw==", "piece"=>{"name"=>"aa", "description"=>"aa", "room"=>"aa", "showcase"=>"aa", "item"=>""}, "commit"=>"Save", "exhibition_id"=>"1"}
+Unpermitted parameter: item
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "pieces" ("name", "description", "room", "showcase", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["name", "aa"], ["description", "aa"], ["room", "aa"], ["showcase", "aa"], ["exhibition_id", 1], ["created_at", "2015-12-16 09:28:07.667331"], ["updated_at", "2015-12-16 09:28:07.667331"]]
+  [1m[36m (61.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/1/pieces
+Completed 302 Found in 118ms (ActiveRecord: 66.5ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:28:07 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.3ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (24.3ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined method `piece_path' for #<#<Class:0x007f360e9ca0e0>:0x007f360e9c9668>):
+    20:         %td= piece.room
+    21:         %td= piece.showcase
+    22:         %td= piece.item
+    23:         %td= link_to 'Show', piece
+    24:         %td= link_to 'Edit', edit_piece_path(piece)
+    25:         %td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    26: 
+  app/views/pieces/index.html.haml:23:in `block in _app_views_pieces_index_html_haml__238959596968885315_69935075049980'
+  app/views/pieces/index.html.haml:16:in `_app_views_pieces_index_html_haml__238959596968885315_69935075049980'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.1ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 48ms (Views: 46.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:29:13 -0600
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:30:20 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (34.6ms)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (undefined local variable or method `exhibition_piece' for #<#<Class:0x007f5a95687328>:0x007f5a95686630>):
+    20:         %td= piece.room
+    21:         %td= piece.showcase
+    22:         %td= piece.item
+    23:         %td= link_to 'Show', exhibition_piece
+    24:         %td= link_to 'Edit', edit_exhibition_piece_path(piece)
+    25:         %td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    26: 
+  app/views/pieces/index.html.haml:23:in `block in _app_views_pieces_index_html_haml___73229663783503002_70013515150060'
+  app/views/pieces/index.html.haml:16:in `_app_views_pieces_index_html_haml___73229663783503002_70013515150060'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (39.3ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:31:32 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (8.6ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"pieces", :exhibition_id=>1, :id=>nil} missing required keys: [:id]):
+    20:         %td= piece.room
+    21:         %td= piece.showcase
+    22:         %td= piece.item
+    23:         %td= link_to 'Show', exhibition_piece_path(piece.id)
+    24:         %td= link_to 'Edit', edit_exhibition_piece_path(piece)
+    25:         %td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    26: 
+  app/views/pieces/index.html.haml:23:in `block in _app_views_pieces_index_html_haml___73229663783503002_70013512927180'
+  app/views/pieces/index.html.haml:16:in `_app_views_pieces_index_html_haml___73229663783503002_70013512927180'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (31.5ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:31:52 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (12.0ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"pieces", :exhibition_id=>#<Piece id: 1, name: "aa", description: "aa", room: "aa", showcase: "aa", item_id: nil, created_at: "2015-12-16 09:26:18", updated_at: "2015-12-16 09:26:18", exhibition_id: 1>, :id=>nil} missing required keys: [:id]):
+    20:         %td= piece.room
+    21:         %td= piece.showcase
+    22:         %td= piece.item
+    23:         %td= link_to 'Edit', edit_exhibition_piece_path(piece)
+    24:         %td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    25: 
+    26: %br
+  app/views/pieces/index.html.haml:23:in `block in _app_views_pieces_index_html_haml___73229663783503002_70013509772000'
+  app/views/pieces/index.html.haml:16:in `_app_views_pieces_index_html_haml___73229663783503002_70013509772000'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (21.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (37.0ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:32:11 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (24.7ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `piece_path' for #<#<Class:0x007f5a95687328>:0x007f5a84078330>):
+    20:         %td= piece.room
+    21:         %td= piece.showcase
+    22:         %td= piece.item
+    23:         %td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    24: 
+    25: %br
+    26: 
+  app/views/pieces/index.html.haml:23:in `block in _app_views_pieces_index_html_haml___73229663783503002_70013369431080'
+  app/views/pieces/index.html.haml:16:in `_app_views_pieces_index_html_haml___73229663783503002_70013369431080'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (30.1ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:33:53 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (Inconsistent indentation: 5 spaces used for indentation, but the rest of the document was indented using 2 spaces.):
+    21:         %td= piece.showcase
+    22:         %td= piece.item
+    23: 
+    24:      -#   %td= link_to 'Show', piece
+    25:      -#   %td= link_to 'Edit', edit_piece_path(piece)
+    26:      -#   %td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    27: 
+  app/views/pieces/index.html.haml:24
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (16.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (38.6ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (8.8ms)
+Completed 200 OK in 253ms (Views: 250.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2015-12-16 03:34:57 -0600
+
+
+Started GET "/exhibitions/" for 127.0.0.1 at 2015-12-16 03:35:02 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (2.5ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (13.1ms)
+Completed 200 OK in 76ms (Views: 72.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 03:35:04 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 34ms (Views: 32.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:35:07 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.2ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 03:35:11 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 35ms (Views: 32.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:35:12 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 29ms (Views: 27.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2015-12-16 03:35:16 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2015-12-16 03:35:18 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 71ms (Views: 69.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 03:43:55 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 68ms (Views: 67.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/new" for 127.0.0.1 at 2015-12-16 03:43:57 -0600
+Processing by ExhibitionsController#new as HTML
+  Rendered exhibitions/_form.html.haml (10.8ms)
+  Rendered exhibitions/new.html.haml within layouts/application (13.6ms)
+Completed 200 OK in 49ms (Views: 48.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/exhibitions" for 127.0.0.1 at 2015-12-16 03:45:10 -0600
+Processing by ExhibitionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"btudMBGBlWnRRlPQwbdSvxHeQ5a0aWIR0eXFDeyufI+xfKMZKa885SPxrwBIdnxRWvDlHVgpzVvPwrU8KwCFmw==", "exhibition"=>{"name"=>"Umbral", "description"=>"--", "miniDescription"=>"Escenario cultural y ecologico donde se desarrollaron las sociedades", "item"=>""}, "commit"=>"Save"}
+Unpermitted parameter: item
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO "exhibitions" ("name", "description", "miniDescription", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Umbral"], ["description", "--"], ["miniDescription", "Escenario cultural y ecologico donde se desarrollaron las sociedades"], ["created_at", "2015-12-16 09:45:10.143552"], ["updated_at", "2015-12-16 09:45:10.143552"]]
+  [1m[35m (140.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/4
+Completed 302 Found in 154ms (ActiveRecord: 143.7ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2015-12-16 03:45:10 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 40ms (Views: 38.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 03:45:13 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 27ms (Views: 26.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/new" for 127.0.0.1 at 2015-12-16 03:45:15 -0600
+Processing by ExhibitionsController#new as HTML
+  Rendered exhibitions/_form.html.haml (1.9ms)
+  Rendered exhibitions/new.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 39ms (Views: 38.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/exhibitions" for 127.0.0.1 at 2015-12-16 03:46:55 -0600
+Processing by ExhibitionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wmWzn245HeKhBZNinxem/Sp8A1eSB2gSj3SeXBkSEQwdwo22Vhe0blOyb7IW1ogTYVKl3H5Hx1iRU+5t3rzoGA==", "exhibition"=>{"name"=>"El Jade", "description"=>"El  jade elaborado en Costa Rica era tallado en el area central, especialmente en las planicies del Caribe Central, pero tambien en la subregion de guanacaste-Nicoya", "miniDescription"=>"Proceso de elaboracion del jade, rutas de comercio, simblismo y uso social", "item"=>""}, "commit"=>"Save"}
+Unpermitted parameter: item
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "exhibitions" ("name", "description", "miniDescription", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "El Jade"], ["description", "El  jade elaborado en Costa Rica era tallado en el area central, especialmente en las planicies del Caribe Central, pero tambien en la subregion de guanacaste-Nicoya"], ["miniDescription", "Proceso de elaboracion del jade, rutas de comercio, simblismo y uso social"], ["created_at", "2015-12-16 09:46:55.828114"], ["updated_at", "2015-12-16 09:46:55.828114"]]
+  [1m[36m (13.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/5
+Completed 302 Found in 21ms (ActiveRecord: 14.1ms)
+
+
+Started GET "/exhibitions/5" for 127.0.0.1 at 2015-12-16 03:46:55 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 39ms (Views: 37.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-16 03:46:57 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 74ms (Views: 73.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5" for 127.0.0.1 at 2015-12-16 03:47:18 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered exhibitions/show.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 45ms (Views: 41.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/exhibitions/5/pieces" for 127.0.0.1 at 2015-12-16 03:47:19 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 5]]
+  Rendered pieces/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 77ms (Views: 72.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/pieces/new" for 127.0.0.1 at 2015-12-16 03:47:21 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered pieces/_form.html.haml (4.1ms)
+  Rendered pieces/new.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 32ms (Views: 30.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/exhibitions/5/pieces" for 127.0.0.1 at 2015-12-16 03:48:19 -0600
+Processing by PiecesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qFGJW2AcGwO8eDtgAvT7JTOlHEOkrgDNS7Va/BaeiPB39rdyWDKyj07Px7CLNdXLeIu6yEjur4dVkirN0TBx5A==", "piece"=>{"name"=>"Vasija Globular", "description"=>"Vasija GLobular, cuello alto y restringido, borde exverso, labio redondeado", "room"=>"5", "showcase"=>"E-30", "item"=>""}, "commit"=>"Save", "exhibition_id"=>"5"}
+Unpermitted parameter: item
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "pieces" ("name", "description", "room", "showcase", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["name", "Vasija Globular"], ["description", "Vasija GLobular, cuello alto y restringido, borde exverso, labio redondeado"], ["room", "5"], ["showcase", "E-30"], ["exhibition_id", 5], ["created_at", "2015-12-16 09:48:19.085714"], ["updated_at", "2015-12-16 09:48:19.085714"]]
+  [1m[36m (131.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/5/pieces
+Completed 302 Found in 141ms (ActiveRecord: 133.9ms)
+
+
+Started GET "/exhibitions/5/pieces" for 127.0.0.1 at 2015-12-16 03:48:19 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 5]]
+  Rendered pieces/index.html.haml within layouts/application (0.9ms)
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.2ms)
