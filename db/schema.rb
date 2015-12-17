@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216075122) do
+ActiveRecord::Schema.define(version: 20151217083659) do
+
+  create_table "exhibition_images", force: :cascade do |t|
+    t.string   "file"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "exhibition_id"
+  end
+
+  add_index "exhibition_images", ["exhibition_id"], name: "index_exhibition_images_on_exhibition_id"
 
   create_table "exhibitions", force: :cascade do |t|
     t.string   "name"

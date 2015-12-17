@@ -1,0 +1,19 @@
+%h1 Listing exhibition_images
+
+%table
+  %thead
+    %tr
+      %th File
+      %th
+      %th
+
+  %tbody
+    - @exhibition_images.each do |exhibition_image|
+      %tr
+        %td= exhibition_image.file_url
+        %td= link_to 'Download', exhibition_image.file_url
+        %td= link_to 'Destroy', exhibition_exhibition_image_path(exhibition_image.exhibition,exhibition_image), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exhibition image', new_exhibition_exhibition_image_path

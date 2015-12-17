@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b File:
+  = @exhibition_image.file
+
+= link_to 'Edit', edit_exhibition_image_path(@exhibition_image)
+\|
+= link_to 'Back', exhibition_images_path
