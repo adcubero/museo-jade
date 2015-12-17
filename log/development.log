@@ -4998,3 +4998,18 @@ Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bd
 
 
 Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-12-17 03:19:53 -0600
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-17 12:38:10 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.5ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (117.0ms)
+Completed 200 OK in 1382ms (Views: 1297.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/exhibitions.json" for 127.0.0.1 at 2015-12-17 12:38:18 -0600
+Processing by ExhibitionsController#index as JSON
+  [1m[36mExhibition Load (0.5ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.json.jbuilder (54.8ms)
+Completed 200 OK in 74ms (Views: 71.7ms | ActiveRecord: 0.5ms)
