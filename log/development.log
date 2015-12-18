@@ -6124,3 +6124,86 @@ Processing by PiecesController#index as HTML
   [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
   Rendered pieces/index.html.haml within layouts/application (3.8ms)
 Completed 200 OK in 65ms (Views: 61.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2015-12-18 03:57:18 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.7ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (89.8ms)
+Completed 200 OK in 610ms (Views: 503.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2015-12-18 03:57:23 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 143ms (Views: 67.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2015-12-18 03:57:24 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionImage Load (3.0ms)[0m  [1mSELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (29.1ms)
+Completed 200 OK in 203ms (Views: 113.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/exhibitions/4/pieces" for 127.0.0.1 at 2015-12-18 03:57:28 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.6ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.html.haml within layouts/application (59.4ms)
+Completed 200 OK in 161ms (Views: 132.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/exhibitions/4/pieces.json" for 127.0.0.1 at 2015-12-18 03:57:34 -0600
+Processing by PiecesController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.json.jbuilder (37.4ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `piece_url' for #<#<Class:0x007f873a0eb7d0>:0x007f873a5505c8>):
+    1: json.array!(@pieces) do |piece|
+    2:   json.extract! piece, :id, :name, :description, :room, :showcase, :item_id
+    3:   json.url piece_url(piece, format: :json)
+    4: end
+  app/views/pieces/index.json.jbuilder:3:in `block in _app_views_pieces_index_json_jbuilder___1843377633179946753_70109387118640'
+  app/views/pieces/index.json.jbuilder:1:in `_app_views_pieces_index_json_jbuilder___1843377633179946753_70109387118640'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (25.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (55.7ms)
+
+
+Started GET "/exhibitions/4/pieces.json" for 127.0.0.1 at 2015-12-18 03:57:45 -0600
+Processing by PiecesController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.json.jbuilder (90.0ms)
+Completed 200 OK in 94ms (Views: 91.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/pieces.json" for 127.0.0.1 at 2015-12-18 03:58:10 -0600
+Processing by PiecesController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.json.jbuilder (3.8ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.2ms)
