@@ -11,6 +11,7 @@
       %th
       %th
       %th
+      %th
 
   %tbody
     - @pieces.each do |piece|
@@ -20,11 +21,11 @@
         %td= piece.room
         %td= piece.showcase
         %td= piece.item
-
-        /%td= link_to 'Show', piece
-        /%td= link_to 'Edit', edit_piece_path(piece)
-        /%td= link_to 'Destroy', piece, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Download', piece.file_url
+        %td= link_to 'Show', exhibition_piece_path(piece.exhibition,piece)
+        %td= link_to 'Edit', edit_exhibition_piece_path(piece.exhibition,piece)
+        %td= link_to 'Destroy', exhibition_piece_path(piece.exhibition,piece), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Piece', new_exhibition_piece_path(@exhibition)
+= link_to 'New Piece', new_exhibition_piece_path

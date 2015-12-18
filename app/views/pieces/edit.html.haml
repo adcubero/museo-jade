@@ -2,6 +2,4 @@
 
 = render 'form'
 
-= link_to 'Show', @piece
-\|
-= link_to 'Back', pieces_path
+= link_to 'Back', exhibition_piece_path(@piece.exhibition,@piece)

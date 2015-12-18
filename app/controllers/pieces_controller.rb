@@ -11,6 +11,7 @@ class PiecesController < ApplicationController
   # GET /pieces/1
   # GET /pieces/1.json
   def show
+    @exhibition = Exhibition.find(params[:exhibition_id])
   end
 
   # GET /pieces/new
@@ -22,6 +23,8 @@ class PiecesController < ApplicationController
 
   # GET /pieces/1/edit
   def edit
+    @piece = Piece.find(params[:id])
+    @path = { url: exhibition_pieces_path(@piece.exhibition_id), html: { method: :post } }
   end
 
   # POST /pieces
@@ -60,7 +63,7 @@ class PiecesController < ApplicationController
   def destroy
     @piece.destroy
     respond_to do |format|
-      format.html { redirect_to pieces_url, notice: 'Piece was successfully destroyed.' }
+      format.html { redirect_to exhibition_pieces_url, notice: 'Piece was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +76,6 @@ class PiecesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def piece_params
-      params.require(:piece).permit(:name, :description, :room, :showcase, :item_id)
+      params.require(:piece).permit(:name, :description, :room, :showcase, :item_id, :file)
     end
 end
