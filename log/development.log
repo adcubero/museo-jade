@@ -6207,3 +6207,189 @@ Processing by PiecesController#index as JSON
   [1m[36mPiece Load (0.1ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
   Rendered pieces/index.json.jbuilder (3.8ms)
 Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-01-06 19:02:39 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (27.5ms)
+Completed 200 OK in 521ms (Views: 490.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-01-06 19:02:49 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (1.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 199ms (Views: 100.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:02:51 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionImage Load (0.2ms)[0m  [1mSELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 144ms (Views: 66.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_images/new" for 127.0.0.1 at 2016-01-06 19:02:57 -0600
+Processing by ExhibitionImagesController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_images/_form.html.haml (46.4ms)
+  Rendered exhibition_images/new.html.haml within layouts/application (74.2ms)
+Completed 200 OK in 115ms (Views: 113.7ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:03:02 -0600
+Processing by ExhibitionImagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mps7pXQmpEzBKw/bael0uZQEReJds28XtkJxZ3irvWPV8ZCgN3CoovEOmpUwmEGGVFzvqOxKqcFinlD4o/lXcg==", "exhibition_image"=>{"file"=>#<ActionDispatch::Http::UploadedFile:0x007f880a762ea8 @tempfile=#<Tempfile:/tmp/RackMultipart20160106-3620-f0yv5r.jpg>, @original_filename="monogatari-5-7-black-hanekawa.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"exhibition_image[file]\"; filename=\"monogatari-5-7-black-hanekawa.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save", "exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "exhibition_images" ("file", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["file", "monogatari-5-7-black-hanekawa.jpg"], ["exhibition_id", 4], ["created_at", "2016-01-07 01:03:02.558177"], ["updated_at", "2016-01-07 01:03:02.558177"]]
+  [1m[35m (54.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/4/exhibition_images
+Completed 302 Found in 83ms (ActiveRecord: 54.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:03:02 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionImage Load (0.1ms)[0m  SELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 43ms (Views: 40.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:03:57 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionImage Load (0.2ms)[0m  SELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 66ms (Views: 54.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/exhibition_images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/exhibition_images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-06 19:03:58 -0600
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:04:12 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionImage Load (0.2ms)[0m  [1mSELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (9.9ms)
+Completed 200 OK in 266ms (Views: 218.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/exhibition_images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/exhibition_images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-01-06 19:04:13 -0600
+
+
+Started GET "/exhibitions/4/exhibition_images/new" for 127.0.0.1 at 2016-01-06 19:04:22 -0600
+Processing by ExhibitionImagesController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_images/_form.html.haml (22.5ms)
+  Rendered exhibition_images/new.html.haml within layouts/application (32.0ms)
+Completed 200 OK in 101ms (Views: 94.0ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:04:27 -0600
+Processing by ExhibitionImagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5wnQunnH9FX8JV9Deq5GQ/0UnYmgz/44qz1ezIstD8MAY3u/OpH4u8wAyg0j33N8PUw3wxE2OO5/4X9TUH/l0g==", "exhibition_image"=>{"file"=>#<ActionDispatch::Http::UploadedFile:0x007f506248dc08 @tempfile=#<Tempfile:/tmp/RackMultipart20160106-3729-1m5yqju.jpg>, @original_filename="monogatari-5-7-black-hanekawa.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"exhibition_image[file]\"; filename=\"monogatari-5-7-black-hanekawa.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Save", "exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (95.1ms)[0m  [1mINSERT INTO "exhibition_images" ("file", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["file", "monogatari-5-7-black-hanekawa.jpg"], ["exhibition_id", 4], ["created_at", "2016-01-07 01:04:27.820505"], ["updated_at", "2016-01-07 01:04:27.820505"]]
+  [1m[35m (68.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/4/exhibition_images
+Completed 302 Found in 1124ms (ActiveRecord: 163.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-06 19:04:28 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionImage Load (0.1ms)[0m  SELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 46ms (Views: 43.9ms | ActiveRecord: 0.3ms)
