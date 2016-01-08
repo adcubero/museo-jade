@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107012822) do
+ActiveRecord::Schema.define(version: 20160108055307) do
+
+  create_table "audioguides", force: :cascade do |t|
+    t.text     "description"
+    t.string   "file"
+    t.string   "audio"
+    t.integer  "piece_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "audioguides", ["piece_id"], name: "index_audioguides_on_piece_id"
 
   create_table "exhibition_images", force: :cascade do |t|
     t.string   "file"
@@ -49,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160107012822) do
     t.datetime "updated_at",    null: false
     t.integer  "exhibition_id"
     t.string   "file"
+    t.string   "audio"
   end
 
   add_index "pieces", ["exhibition_id"], name: "index_pieces_on_exhibition_id"

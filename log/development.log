@@ -6645,3 +6645,461 @@ Processing by ExhibitionsController#index as HTML
   [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
   Rendered exhibitions/index.html.haml within layouts/application (4.6ms)
 Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAudioguides (20160108034923)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (6.0ms)[0m  [1mCREATE TABLE "audioguides" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "description" text, "file" varchar, "audio" varchar, "piece_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_audioguides_on_piece_id" ON "audioguides" ("piece_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160108034923"]]
+  [1m[36m (20.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguides_on_piece_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguides_on_piece_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+[0m
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-01-07 23:01:05 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (96.1ms)
+Completed 200 OK in 862ms (Views: 805.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/audioguides.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-01-07 23:01:06 -0600
+
+
+Started GET "/assets/audioguides.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-01-07 23:01:06 -0600
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2016-01-07 23:01:09 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 212ms (Views: 81.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-07 23:01:11 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 164ms (Views: 123.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/1/pieces/new" for 127.0.0.1 at 2016-01-07 23:01:14 -0600
+Processing by PiecesController#new as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/_form.html.haml (72.8ms)
+  Rendered pieces/new.html.haml within layouts/application (89.3ms)
+Completed 200 OK in 182ms (Views: 176.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-07 23:01:19 -0600
+Processing by PiecesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yeOY0TsdkyruXTm9YWCiY0Tkw/bg/CNh5/+C/n3DAHJTbIESAupFgdPxoUB+MbKZbq7qb+FfGGk4HSgNT+82+A==", "piece"=>{"name"=>"gg", "description"=>"gg", "room"=>"gg", "showcase"=>"gg", "item"=>""}, "commit"=>"Save", "exhibition_id"=>"1"}
+Unpermitted parameter: item
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "pieces" ("name", "description", "room", "showcase", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "gg"], ["description", "gg"], ["room", "gg"], ["showcase", "gg"], ["exhibition_id", 1], ["created_at", "2016-01-08 05:01:19.503497"], ["updated_at", "2016-01-08 05:01:19.503497"]]
+  [1m[35m (8.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/1/pieces
+Completed 302 Found in 16ms (ActiveRecord: 9.5ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-07 23:01:19 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (16.7ms)
+Completed 200 OK in 97ms (Views: 95.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:01:20 -0600
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[36mPiece Load (0.3ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"audioguides", :exhibition_id=>"1", :id=>"1"} missing required keys: [:piece_id]):
+    16:   %b Item:
+    17:   = @piece.item
+    18: 
+    19: = link_to 'Audioguide', new_exhibition_piece_audioguide_path
+  app/views/pieces/show.html.haml:19:in `_app_views_pieces_show_html_haml___3877153238509902571_70215152128680'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (35.9ms)
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:01:21 -0600
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"audioguides", :exhibition_id=>"1", :id=>"1"} missing required keys: [:piece_id]):
+    16:   %b Item:
+    17:   = @piece.item
+    18: 
+    19: = link_to 'Audioguide', new_exhibition_piece_audioguide_path
+  app/views/pieces/show.html.haml:19:in `_app_views_pieces_show_html_haml___3877153238509902571_70215155496060'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (21.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (32.9ms)
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:06:12 -0600
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (10.8ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"audioguides", :exhibition_id=>1, :id=>"1", :piece_id=>nil} missing required keys: [:piece_id]):
+    16:   %b Item:
+    17:   = @piece.item
+    18: 
+    19: = link_to 'Audioguide', new_exhibition_piece_audioguide_path(@piece.id)
+  app/views/pieces/show.html.haml:19:in `_app_views_pieces_show_html_haml___3877153238509902571_70215267945920'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (3.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (52.5ms)
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:15:46 -0600
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+SyntaxError (/home/adrian/Documents/museo-jade/app/views/pieces/show.html.haml:19: syntax error, unexpected ','
+...bition_piece_audioguide_path, , data: { piece_id: @piece.id }
+...                               ^):
+  app/views/pieces/show.html.haml:19: syntax error, unexpected ','
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (23.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (76.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (23.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (45.8ms)
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:16:03 -0600
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"audioguides", :exhibition_id=>"1", :id=>"1"} missing required keys: [:piece_id]):
+    16:   %b Item:
+    17:   = @piece.item
+    18: 
+    19: = link_to 'Audioguide', new_exhibition_piece_audioguide_path, data: { piece_id: @piece.id }
+  app/views/pieces/show.html.haml:19:in `_app_views_pieces_show_html_haml___3877153238509902571_70215155632720'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (33.0ms)
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:20:09 -0600
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (8.3ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"audioguides", :exhibition_id=>"1", :id=>"1"} missing required keys: [:piece_id]):
+    16:   %b Item:
+    17:   = @piece.item
+    18: 
+    19: = link_to 'Audioguide', new_exhibition_piece_audioguide_path, :piece_id => @piece.id
+  app/views/pieces/show.html.haml:19:in `_app_views_pieces_show_html_haml___3877153238509902571_70215147692240'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAudioToPiece (20160108055307)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "pieces" ADD "audio" varchar[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160108055307"]]
+  [1m[36m (22.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguides_on_piece_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguides_on_piece_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+[0m
+
+
+Started GET "/exhibitions/1/pieces/1" for 127.0.0.1 at 2016-01-07 23:58:50 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PiecesController#show as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[35mPiece Load (0.6ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pieces/show.html.haml within layouts/application (33.4ms)
+Completed 200 OK in 494ms (Views: 400.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-07 23:59:06 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPiece Load (2.4ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (18.1ms)
+Completed 200 OK in 205ms (Views: 174.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/exhibitions/1/pieces/1/edit" for 127.0.0.1 at 2016-01-07 23:59:10 -0600
+Processing by PiecesController#edit as HTML
+  Parameters: {"exhibition_id"=>"1", "id"=>"1"}
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered pieces/_form.html.haml (20.6ms)
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pieces/edit.html.haml within layouts/application (29.3ms)
+Completed 200 OK in 160ms (Views: 156.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:00:46 -0600
+Processing by PiecesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pHsWDiSmWe98xBY/r4crLiASmTVjRHrx5w3KRAAzN+0+9A/NHVGPREFojsKw1jvUCliwrGLnQfk472C3Mh8BZw==", "piece"=>{"name"=>"gg", "description"=>"gg", "room"=>"gg", "showcase"=>"gg", "item"=>"", "audio"=>#<ActionDispatch::Http::UploadedFile:0x007f93d65de7f8 @tempfile=#<Tempfile:/tmp/RackMultipart20160108-3767-pt7ekv.mp3>, @original_filename="0018-EricClapton_Cocaine.mp3", @content_type="audio/mpeg", @headers="Content-Disposition: form-data; name=\"piece[audio]\"; filename=\"0018-EricClapton_Cocaine.mp3\"\r\nContent-Type: audio/mpeg\r\n">}, "commit"=>"Save", "exhibition_id"=>"1"}
+Unpermitted parameter: item
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "pieces" ("name", "description", "room", "showcase", "audio", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "gg"], ["description", "gg"], ["room", "gg"], ["showcase", "gg"], ["audio", "0018-EricClapton_Cocaine.mp3"], ["exhibition_id", 1], ["created_at", "2016-01-08 06:00:46.897984"], ["updated_at", "2016-01-08 06:00:46.897984"]]
+  [1m[35m (22.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/1/pieces
+Completed 302 Found in 20529ms (ActiveRecord: 23.1ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:07 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (1.6ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.4ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (9.3ms)
+Completed 200 OK in 182ms (Views: 175.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:19 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 54ms (Views: 53.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:21 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 44ms (Views: 42.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:21 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (11.3ms)
+Completed 200 OK in 76ms (Views: 75.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:22 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 54ms (Views: 52.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:23 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.2ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 50ms (Views: 48.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:23 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 52ms (Views: 50.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces" for 127.0.0.1 at 2016-01-08 00:01:24 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 52ms (Views: 50.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/pieces.json" for 127.0.0.1 at 2016-01-08 00:02:37 -0600
+Processing by PiecesController#index as JSON
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 1]]
+  Rendered pieces/index.json.jbuilder (159.2ms)
+Completed 200 OK in 163ms (Views: 161.3ms | ActiveRecord: 0.3ms)

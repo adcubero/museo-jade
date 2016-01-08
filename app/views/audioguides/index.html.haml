@@ -1,0 +1,27 @@
+%h1 Listing audioguides
+
+%table
+  %thead
+    %tr
+      %th Description
+      %th File
+      %th Audio
+      %th Piece
+      %th
+      %th
+      %th
+
+  %tbody
+    - @audioguides.each do |audioguide|
+      %tr
+        %td= audioguide.description
+        %td= audioguide.file
+        %td= audioguide.audio
+        %td= audioguide.piece
+        %td= link_to 'Show', audioguide
+        %td= link_to 'Edit', edit_audioguide_path(audioguide)
+        %td= link_to 'Destroy', audioguide, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Audioguide', new_audioguide_path
