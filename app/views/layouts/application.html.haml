@@ -4,7 +4,28 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title JADE
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'
+    = stylesheet_link_tag    'myCSS'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    %nav.navbar.navbar-inverse.bar
+      .container
+        .container-fluid
+          .navbar-header
+            %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-2", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.navbar-brand{:href => "#"} Museo del Jade
+          #bs-example-navbar-collapse-2.collapse.navbar-collapse
+            %ul.nav.navbar-nav
+              %li
+                %a{:href => exhibitions_path}
+                  Exhibiciones
+                  %span.sr-only (current)
+              %li
+                %a{:href => "#"} Eventos
+    .container
+      = yield

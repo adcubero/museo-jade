@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(28,27,27);
+    color: white;
+}
+
+.exhibition-item{
+  background-color: rgb(39,39,39);
+  border-color: rgb(0,169,157);
+  color: white;
+}
+
+.green{
+  color: rgb(0,169,157);
+}
+
+.brown{
+  color: rgb(213,183,116);
+}

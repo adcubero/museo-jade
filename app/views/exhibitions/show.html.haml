@@ -1,20 +1,15 @@
-%p#notice= notice
+.row
+  .col-md-4 
+    %img{:alt => "Smiley face", :height => "200", :src => @exhibition.file_url, :width => "350"}/
+  .col-md-6
+    %h1= @exhibition.name
+    %h2= @exhibition.miniDescription
+  .col-md-2
+    = link_to 'Piezas', exhibition_pieces_path(@exhibition.id), class: "btn btn-info" 
+    %br
+    = link_to 'Imagenes', exhibition_exhibition_images_path(@exhibition.id), class: "btn btn-warning"
+    %br
+    = link_to 'Editar', edit_exhibition_path(@exhibition), class: "btn btn-danger"
+    %br
+%h3= @exhibition.description
 
-%p
-  %b Name:
-  = @exhibition.name
-%p
-  %b Description:
-  = @exhibition.description
-%p
-  %b Minidescription:
-  = @exhibition.miniDescription
-
-
-= link_to 'pieces', exhibition_pieces_path(@exhibition.id)
-\|
-= link_to 'Images', exhibition_exhibition_images_path(@exhibition.id)
-\|
-= link_to 'Edit', edit_exhibition_path(@exhibition)
-\|
-= link_to 'Back', exhibitions_path
