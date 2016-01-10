@@ -1,5 +1,5 @@
 class Audioguide < ActiveRecord::Base
-  mount_uploader :file, FileUploader
   mount_uploader :audio, FileUploader
-  belongs_to :piece
+  mount_uploader :file, FileUploader
+  belongs_to :exhibition
 end

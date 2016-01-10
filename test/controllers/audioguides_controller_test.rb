@@ -18,7 +18,7 @@ class AudioguidesControllerTest < ActionController::TestCase
 
   test "should create audioguide" do
     assert_difference('Audioguide.count') do
-      post :create, audioguide: { audio: @audioguide.audio, description: @audioguide.description, file: @audioguide.file, piece_id: @audioguide.piece_id }
+      post :create, audioguide: { audio: @audioguide.audio, description: @audioguide.description, exhibition_id: @audioguide.exhibition_id, name: @audioguide.name, text: @audioguide.text }
     end
 
     assert_redirected_to audioguide_path(assigns(:audioguide))
@@ -35,7 +35,7 @@ class AudioguidesControllerTest < ActionController::TestCase
   end
 
   test "should update audioguide" do
-    patch :update, id: @audioguide, audioguide: { audio: @audioguide.audio, description: @audioguide.description, file: @audioguide.file, piece_id: @audioguide.piece_id }
+    patch :update, id: @audioguide, audioguide: { audio: @audioguide.audio, description: @audioguide.description, exhibition_id: @audioguide.exhibition_id, name: @audioguide.name, text: @audioguide.text }
     assert_redirected_to audioguide_path(assigns(:audioguide))
   end
 

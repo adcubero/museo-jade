@@ -1,18 +1,21 @@
 %p#notice= notice
 
 %p
+  %b Name:
+  = @audioguide.name
+%p
   %b Description:
   = @audioguide.description
 %p
-  %b File:
-  = @audioguide.file
+  %b Text:
+  = @audioguide.text
 %p
   %b Audio:
   = @audioguide.audio
 %p
-  %b Piece:
-  = @audioguide.piece
+  %b Exhibition:
+  = @audioguide.exhibition
 
-= link_to 'Edit', edit_audioguide_path(@audioguide)
-\|
-= link_to 'Back', audioguides_path
+/ = link_to 'Edit', edit_audioguide_path(@audioguide)
+/ \|
+/ = link_to 'Back', audioguides_path

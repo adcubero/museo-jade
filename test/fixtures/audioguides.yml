@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyText
-  file: MyString
+  name: MyString
+  description: MyString
+  text: MyText
   audio: MyString
-  piece_id: 
+  exhibition_id: 
 
 two:
-  description: MyText
-  file: MyString
+  name: MyString
+  description: MyString
+  text: MyText
   audio: MyString
-  piece_id: 
+  exhibition_id: 

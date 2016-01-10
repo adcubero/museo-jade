@@ -1,6 +1,6 @@
 body {
     background-color: rgb(28,27,27);
-    color: white;
+    
 }
 
 .exhibition-item{
@@ -15,4 +15,24 @@ body {
 
 .brown{
   color: rgb(213,183,116);
+}
+ul {
+  list-style-type: none;
+}
+
+li img {
+  float: left;
+  margin: 10px;
+  border: 5px solid #fff;
+
+  -webkit-transition: box-shadow 0.5s ease;
+  -moz-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
+  -ms-transition: box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease;
+}
+
+li img:hover {
+  -webkit-box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
+  box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
 }

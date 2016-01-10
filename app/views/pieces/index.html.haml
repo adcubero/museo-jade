@@ -1,33 +1,109 @@
 %h1 Listing pieces
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Room
-      %th Showcase
-      %th Item
-      %th
-      %th
-      %th
-      %th
-      %th
+= link_to 'New Piece', new_exhibition_piece_path
 
-  %tbody
-    - @pieces.each do |piece|
-      %tr
-        %td= piece.name
-        %td= piece.description
-        %td= piece.room
-        %td= piece.showcase
-        %td= piece.item
-        %td= link_to 'Download', piece.file_url
-        %td= link_to 'Listen', piece.audio_url
-        %td= link_to 'Show', exhibition_piece_path(piece.exhibition,piece)
-        %td= link_to 'Edit', edit_exhibition_piece_path(piece.exhibition,piece)
-        %td= link_to 'Destroy', exhibition_piece_path(piece.exhibition,piece), :method => :delete, :data => { :confirm => 'Are you sure?' }
+/ %br
+
+/ %table
+/   %thead
+/     %tr
+/       %th Name
+/       %th Description
+/       %th Room
+/       %th Showcase
+/       %th Item
+/       %th
+/       %th
+/       %th
+/       %th
+/       %th
+
+/   %tbody
+/     - @pieces.each do |piece|
+/       %tr
+/         %td= piece.name
+/         %td= piece.description
+/         %td= piece.room
+/         %td= piece.showcase
+/         %td= piece.item
+/         %td= link_to 'Download', piece.file_url
+/         %td= link_to 'Listen', piece.audio_url
+/         %td= link_to 'Show', exhibition_piece_path(piece.exhibition,piece)
+/         %td= link_to 'Edit', edit_exhibition_piece_path(piece.exhibition,piece)
+/         %td= link_to 'Destroy', exhibition_piece_path(piece.exhibition,piece), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+%ul
+  - @pieces.each do |piece|
+    / Button trigger modal
+    %li
+      %a{"data-target" => "#"+piece.id.to_s, "data-toggle" => "modal"}
+        %img{:alt => "Smiley face", :height => "200", :src => piece.file_url, :width => "200"}/
+    /%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}= piece.name
+    / Modal
+    .modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => piece.id.to_s}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4#myModalLabel.modal-title= piece.name
+          .modal-body
+            %img{:alt => "Smiley face", :height => "200", :src => piece.file_url, :width => "350"}/
+            
+            %h3= piece.description
+            %h3= piece.room
+            %h3= piece.showcase
+          .modal-footer
+            = link_to 'Editar', edit_exhibition_piece_path(piece.exhibition,piece), class: "btn btn-default"
+            = link_to 'Borrar', exhibition_piece_path(piece.exhibition,piece), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
+
 
 %br
 
-= link_to 'New Piece', new_exhibition_piece_path
+/ %ul
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/
+/   %li
+/     %a{:href => "#"}
+/       %img{:src => "http://placehold.it/150x150"}/

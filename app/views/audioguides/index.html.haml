@@ -1,27 +1,60 @@
 %h1 Listing audioguides
 
-%table
-  %thead
-    %tr
-      %th Description
-      %th File
-      %th Audio
-      %th Piece
-      %th
-      %th
-      %th
+= link_to 'New Audioguide', new_exhibition_audioguide_path
 
-  %tbody
-    - @audioguides.each do |audioguide|
-      %tr
-        %td= audioguide.description
-        %td= audioguide.file
-        %td= audioguide.audio
-        %td= audioguide.piece
-        %td= link_to 'Show', audioguide
-        %td= link_to 'Edit', edit_audioguide_path(audioguide)
-        %td= link_to 'Destroy', audioguide, :method => :delete, :data => { :confirm => 'Are you sure?' }
+/ %table
+/   %thead
+/     %tr
+/       %th Name
+/       %th Description
+/       %th Text
+/       %th Audio
+/       %th Exhibition
+/       %th
+/       %th
+/       %th
+/       %th
+
+/   %tbody
+/     - @audioguides.each do |audioguide|
+/       %tr
+/         %td= audioguide.name
+/         %td= audioguide.description
+/         %td= audioguide.text
+/         %td= audioguide.audio
+/         %td= audioguide.exhibition
+/         %td= link_to 'Listen', audioguide.audio_url
+/         %td= link_to 'view', audioguide.file_url
+/         %td= link_to 'Show', exhibition_audioguide_path(audioguide.exhibition,audioguide)
+/         %td= link_to 'Edit', edit_exhibition_audioguide_path(audioguide.exhibition,audioguide)
+/         %td= link_to 'Destroy', exhibition_audioguide_path(audioguide.exhibition,audioguide), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
+%ul
+  - @audioguides.each do |audioguide|
+    / Button trigger modal
+    %li
+      %a{"data-target" => "#"+audioguide.id.to_s, "data-toggle" => "modal"}
+        %img{:alt => "Smiley face", :height => "200", :src => audioguide.file_url, :width => "200"}/
+    /%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}= piece.name
+    / Modal
+    .modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => audioguide.id.to_s}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            %h4#myModalLabel.modal-title= audioguide.name
+          .modal-body
+            %img{:alt => "Smiley face", :height => "200", :src => audioguide.file_url, :width => "350"}/
+            %audio{:controls => ""}
+              %source{:src => audioguide.audio_url, :type => "audio/mpeg"}
+                Your browser does not support the audio element.
+            
+            %h3= audioguide.description
+            %h3= audioguide.text
+          .modal-footer
+            = link_to 'Editar', edit_exhibition_audioguide_path(audioguide.exhibition,audioguide), class: "btn btn-default"
+            = link_to 'Borrar', exhibition_audioguide_path(audioguide.exhibition,audioguide), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
 
-= link_to 'New Audioguide', new_audioguide_path
+

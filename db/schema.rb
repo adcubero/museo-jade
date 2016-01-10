@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108055307) do
+ActiveRecord::Schema.define(version: 20160110120252) do
 
   create_table "audioguides", force: :cascade do |t|
-    t.text     "description"
-    t.string   "file"
+    t.string   "name"
+    t.string   "description"
+    t.text     "text"
     t.string   "audio"
-    t.integer  "piece_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "exhibition_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "file"
   end
 
-  add_index "audioguides", ["piece_id"], name: "index_audioguides_on_piece_id"
+  add_index "audioguides", ["exhibition_id"], name: "index_audioguides_on_exhibition_id"
 
   create_table "exhibition_images", force: :cascade do |t|
     t.string   "file"

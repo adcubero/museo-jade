@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :items
   resources :exhibitions do
     resources :exhibition_images
-    resources :pieces do 
-      resources :audioguides 
-    end
+    resources :pieces 
+    resources :audioguides
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
