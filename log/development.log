@@ -21405,3 +21405,31 @@ Processing by AudioguidesController#index as HTML
   [1m[36mAudioguide Load (0.2ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
   Rendered audioguides/index.html.haml within layouts/application (21.6ms)
 Completed 200 OK in 458ms (Views: 407.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-01-10 06:56:53 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-01-10 06:56:53 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (12.3ms)
+Completed 200 OK in 292ms (Views: 272.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/1" for 127.0.0.1 at 2016-01-10 06:57:00 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered exhibitions/show.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 124ms (Views: 115.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/1/audioguides" for 127.0.0.1 at 2016-01-10 06:57:03 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"1"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mAudioguide Load (0.2ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 1]]
+  Rendered audioguides/index.html.haml within layouts/application (12.4ms)
+Completed 200 OK in 76ms (Views: 52.5ms | ActiveRecord: 0.6ms)
