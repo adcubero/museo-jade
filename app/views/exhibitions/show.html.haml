@@ -2,16 +2,17 @@
   .col-md-4 
     %img{:alt => "Smiley face", :height => "200", :src => @exhibition.file_url, :width => "350"}/
   .col-md-6
-    %h1= @exhibition.name
-    %h2= @exhibition.miniDescription
+    %h1.white= @exhibition.name
+    %h2.white= @exhibition.miniDescription
   .col-md-2
-    = link_to 'Piezas', exhibition_pieces_path(@exhibition.id), class: "btn btn-info" 
+
+    = link_to 'Piezas', exhibition_pieces_path(@exhibition.id), class: "btn btn-default btn-block botonGreen" 
     %br
-    = link_to 'Audioguias', exhibition_audioguides_path(@exhibition.id), class: "btn btn-danger"
+    = link_to 'Audioguias', exhibition_audioguides_path(@exhibition.id), class: "btn btn-default btn-block botonGreen"
     %br
-    = link_to 'Imagenes', exhibition_exhibition_images_path(@exhibition.id), class: "btn btn-warning"
+    = link_to 'Imagenes', exhibition_exhibition_images_path(@exhibition.id), class: "btn btn-default btn-block botonGreen"
     %br
-    = link_to 'Editar', edit_exhibition_path(@exhibition), class: "btn btn-danger"
+    = link_to 'Editar', edit_exhibition_path(@exhibition), class: "btn btn-default btn-block botonGreen"
     %br
-%h3= @exhibition.description
+%h3.white= @exhibition.description
 

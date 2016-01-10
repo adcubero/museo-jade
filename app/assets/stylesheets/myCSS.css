@@ -16,6 +16,30 @@ body {
 .brown{
   color: rgb(213,183,116);
 }
+.white{
+  color: white
+}
+
+.botonGreen{
+  background-color: Transparent;
+  border-color: rgb(0,169,157);
+  color: white;
+}
+
+.botonGreen:visited{
+  background-color: Transparent;
+  border-color: rgb(0,169,157);
+  color: white;
+}
+
+.botonGreen:hover{
+  background-color: Transparent;
+  border-color: rgb(0,169,157);
+  color: rgb(0,169,157);
+}
+
+
+
 ul {
   list-style-type: none;
 }

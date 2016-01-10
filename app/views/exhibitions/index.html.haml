@@ -1,7 +1,12 @@
 %h1.green Exhibiciones Permanentes
 
-= link_to 'Nueva Exhibicion', new_exhibition_path, class: "btn btn-default"
+
 %br
+= link_to 'Nueva Exhibicion', new_exhibition_path, class: "btn btn-default botonGreen"
+
+%br
+%br
+
 
 %ul.list-group
   - @exhibitions.each do |exhibition|
@@ -13,10 +18,11 @@
           %h1.green= exhibition.name
           %h3= exhibition.miniDescription
         .col-md-2
-          = link_to 'Ver', exhibition, class: "btn btn-info" 
           %br
-          = link_to 'Editar', edit_exhibition_path(exhibition), class: "btn btn-warning"
+          = link_to 'Ver', exhibition, class: "btn btn-default btn-block botonGreen" 
           %br
-          = link_to 'Borrar', exhibition, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
+          = link_to 'Editar', edit_exhibition_path(exhibition), class: "btn btn-default btn-block botonGreen"
+          %br
+          = link_to 'Borrar', exhibition, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default btn-block botonGreen"
           %br
 

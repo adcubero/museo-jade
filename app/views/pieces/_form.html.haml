@@ -8,22 +8,19 @@
             %li= msg
 
     .field
-      = f.label :name
+      %label Nombre
       = f.text_field :name, class: "form-control"
     .field
-      = f.label :description
+      %label Descripcion
       = f.text_area :description, class: "form-control"
     .field
-      = f.label :room
+      %label Cuarto
       = f.text_field :room, class: "form-control"
     .field
-      = f.label :showcase
+      %label Vitrina
       = f.text_field :showcase, class: "form-control"
     .field
-      = f.label :file
+      %label Foto
       = f.file_field :file
-    .field
-      = f.label :audio
-      = f.file_field :audio
     .actions
-      = f.submit 'Save', class: "btn btn-primary"
+      = f.submit 'Salvar', class: "btn btn-primary"
