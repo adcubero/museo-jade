@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110120252) do
+ActiveRecord::Schema.define(version: 20160118001357) do
 
   create_table "audioguides", force: :cascade do |t|
     t.string   "name"
@@ -22,9 +22,21 @@ ActiveRecord::Schema.define(version: 20160110120252) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "file"
+    t.string   "key"
+    t.integer  "id1"
+    t.integer  "id2"
   end
 
   add_index "audioguides", ["exhibition_id"], name: "index_audioguides_on_exhibition_id"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.string   "file"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "exhibition_images", force: :cascade do |t|
     t.string   "file"
@@ -67,5 +79,16 @@ ActiveRecord::Schema.define(version: 20160110120252) do
 
   add_index "pieces", ["exhibition_id"], name: "index_pieces_on_exhibition_id"
   add_index "pieces", ["item_id"], name: "index_pieces_on_item_id"
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "adult"
+    t.integer  "child"
+    t.integer  "student"
+    t.integer  "elder"
+    t.date     "date"
+    t.integer  "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

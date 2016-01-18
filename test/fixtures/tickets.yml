@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  adult: 1
+  child: 1
+  student: 1
+  elder: 1
+  date: 2016-01-17
+  code: 1
+
+two:
+  adult: 1
+  child: 1
+  student: 1
+  elder: 1
+  date: 2016-01-17
+  code: 1

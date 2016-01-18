@@ -76,6 +76,6 @@ class AudioguidesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def audioguide_params
-      params.require(:audioguide).permit(:name, :description, :text, :audio, :exhibition_id, :file)
+      params.require(:audioguide).permit(:name, :description, :text, :audio, :exhibition_id, :file, :key, :id1, :id2)
     end
 end

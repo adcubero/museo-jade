@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tickets
+  resources :events
   resources :items
   resources :exhibitions do
     resources :exhibition_images

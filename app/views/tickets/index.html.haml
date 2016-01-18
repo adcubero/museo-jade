@@ -1,0 +1,38 @@
+= form_tag(tickets_path, :method => "get", id: "search-form") do
+  = text_field_tag :search, params[:search], placeholder: "Search Posts",autofocus: true, value: ""
+  = submit_tag "Search"
+
+= link_to 'New Ticket', new_ticket_path
+%br
+
+%table
+  %thead
+    %tr
+      %th Adult
+      %th Child
+      %th Student
+      %th Elder
+      %th Date
+      %th Code
+      %th
+      %th
+      %th
+
+  %tbody
+    - if @tickets.count < 2
+      - @tickets.each do |ticket|
+        %tr
+          %td= ticket.adult
+          %td= ticket.child
+          %td= ticket.student
+          %td= ticket.elder
+          %td= ticket.date
+          %td= ticket.code
+          %td= link_to 'Show', ticket
+          %td= link_to 'Edit', edit_ticket_path(ticket)
+          %td= link_to 'Destroy', ticket, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+
+
+
+
