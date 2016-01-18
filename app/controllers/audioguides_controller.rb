@@ -24,7 +24,7 @@ class AudioguidesController < ApplicationController
   # GET /audioguides/1/edit
   def edit
     @audioguide = Audioguide.find(params[:id])
-    @path = { url: exhibition_audioguides_path(@audioguide.exhibition, @audioguide), html: { method: :put } }
+    @path = { url: "#{exhibition_audioguides_path(@audioguide.exhibition)}/#{@audioguide.id}", html: { method: :put } }
   end
 
   # POST /audioguides

@@ -1,38 +1,58 @@
 = form_tag(tickets_path, :method => "get", id: "search-form") do
-  = text_field_tag :search, params[:search], placeholder: "Search Posts",autofocus: true, value: ""
-  = submit_tag "Search"
+  = text_field_tag :search, params[:search], placeholder: "Codigo",autofocus: true, value: "", class: "form-control"
+  = submit_tag "Buscar", class: "btn btn-default botonGreen"
 
 = link_to 'New Ticket', new_ticket_path
 %br
 
-%table
-  %thead
-    %tr
-      %th Adult
-      %th Child
-      %th Student
-      %th Elder
-      %th Date
-      %th Code
-      %th
-      %th
-      %th
+/ %table
+/   %thead
+/     %tr
+/       %th Adult
+/       %th Child
+/       %th Student
+/       %th Elder
+/       %th Date
+/       %th Code
+/       %th
+/       %th
+/       %th
 
-  %tbody
-    - if @tickets.count < 2
-      - @tickets.each do |ticket|
-        %tr
-          %td= ticket.adult
-          %td= ticket.child
-          %td= ticket.student
-          %td= ticket.elder
-          %td= ticket.date
-          %td= ticket.code
-          %td= link_to 'Show', ticket
-          %td= link_to 'Edit', edit_ticket_path(ticket)
-          %td= link_to 'Destroy', ticket, :method => :delete, :data => { :confirm => 'Are you sure?' }
-%br
+/   %tbody
+/     - if @tickets.count < 2
+/       - @tickets.each do |ticket|
+/         %tr
+/           %td= ticket.adult
+/           %td= ticket.child
+/           %td= ticket.student
+/           %td= ticket.elder
+/           %td= ticket.date
+/           %td= ticket.code
+/           %td= link_to 'Show', ticket
+/           %td= link_to 'Edit', edit_ticket_path(ticket)
+/           %td= link_to 'Destroy', ticket, :method => :delete, :data => { :confirm => 'Are you sure?' }
+/ %br
 
+.row
+  .col-md-4
+  .col-md-4
+    .well
+      - if @tickets.count < 2
+        - @tickets.each do |ticket|
+          %h2 Fecha
+          %p= ticket.date
+          %h2 Adulto
+          %p= ticket.adult
+          %h2 Niño
+          %p= ticket.child
+          %h2 Estudiante
+          %p= ticket.student
+          %h2 Adulto Mayor
+          %p= ticket.elder
+      - else
+        No se encontro codigo
 
+      
+  
 
 

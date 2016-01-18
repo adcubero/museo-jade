@@ -1,27 +1,25 @@
-%h1 Listing events
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Description
-      %th Date
-      %th File
-      %th
-      %th
-      %th
-
-  %tbody
-    - @events.each do |event|
-      %tr
-        %td= event.name
-        %td= event.description
-        %td= event.date
-        %td= event.file
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%h1.green Eventos
 
 %br
+= link_to 'Nuevo Evento', new_event_path, class: "btn btn-default botonGreen"
 
-= link_to 'New Event', new_event_path
+%br
+%br
+
+
+%ul.list-group
+  - @events.each do |event|
+    %li.list-group-item.exhibition-item
+      .row
+        .col-md-4 
+          %img{:alt => "Smiley face", :height => "200", :src => event.file_url, :width => "350"}/
+        .col-md-6
+          %h1.green= event.name
+          %h3= event.description
+          %h3= event.date
+        .col-md-2
+          %br
+          = link_to 'Editar', edit_event_path(event), class: "btn btn-default btn-block botonGreen"
+          %br
+          = link_to 'Borrar', event, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default btn-block botonGreen"
+          %br
