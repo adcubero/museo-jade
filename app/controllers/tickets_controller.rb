@@ -31,6 +31,8 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
     respond_to do |format|
       if @ticket.save
+        puts "tomela toda"
+        format.html { render json: @ticket.to_json }
         format.json { render :show, status: :created, location: @ticket }
       else
         format.html { render :new }
