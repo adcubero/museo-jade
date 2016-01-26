@@ -9,14 +9,14 @@
         %br/
         = f.email_field :email, autofocus: true, class: "form-control"
       .field
-        = f.label :password
+        %label Contraseña
         - if @minimum_password_length
           %em
-            (#{@minimum_password_length} characters minimum)
+            (#{@minimum_password_length} caracteres como mínimo)
         %br/
         = f.password_field :password, autocomplete: "off", class: "form-control"
       .field
-        = f.label :password_confirmation
+        %label Confirmación de Contraseña
         %br/
         = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
       .actions

@@ -1,4 +1,5 @@
 class AudioguidesController < ApplicationController
+  before_action :authenticate_user!, except: [ :index, :show ]
   before_action :set_audioguide, only: [:show, :edit, :update, :destroy]
 
   # GET /audioguides
