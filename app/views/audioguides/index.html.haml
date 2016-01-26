@@ -47,11 +47,13 @@
             %h4#myModalLabel.modal-title= audioguide.name
           .modal-body
             %img{:alt => "Smiley face", :height => "200", :src => audioguide.file_url, :width => "350"}/
+            %h2 Audio
             %audio{:controls => ""}
               %source{:src => audioguide.audio_url, :type => "audio/mpeg"}
                 Your browser does not support the audio element.
-            
+            %h2 Descripción
             %h3= audioguide.description
+            %h2 Texto del Audio
             %h3= audioguide.text
           .modal-footer
             = link_to 'Editar', edit_exhibition_audioguide_path(audioguide.exhibition,audioguide), class: "btn btn-default"

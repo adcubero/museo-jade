@@ -30,5 +30,18 @@
                 %a{:href => events_path} Eventos
               %li
                 %a{:href => tickets_path} Tickets
+            %ul.nav.navbar-nav.navbar-right
+              - if user_signed_in?
+                %li
+                  %a{:href => "#"} Signed in as #{current_user.email}
+                %li
+                  %a{:href => edit_user_registration_path} Edit profile
+                %li
+                  \#{link_to "Sign out", destroy_user_session_path, :method => :delete}
+              - else
+                %li
+                  %a{:href => new_user_registration_path} Sign up
+                %li
+                  %a{:href => new_user_session_path} Sign in
     .container
       = yield

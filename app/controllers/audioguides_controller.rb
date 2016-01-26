@@ -63,7 +63,7 @@ class AudioguidesController < ApplicationController
   def destroy
     @audioguide.destroy
     respond_to do |format|
-      format.html { redirect_to exhibition_audioguides_path(@exhibition), notice: 'Audioguide was successfully destroyed.' }
+      format.html { redirect_to exhibition_audioguides_url, notice: 'Audioguide was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

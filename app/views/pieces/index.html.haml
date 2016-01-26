@@ -50,9 +50,11 @@
             %h4#myModalLabel.modal-title= piece.name
           .modal-body
             %img{:alt => "Smiley face", :height => "200", :src => piece.file_url, :width => "350"}/
-            
+            %h2 Descripción
             %h3= piece.description
+            %h2 Cuarto
             %h3= piece.room
+            %h2 Vitrina
             %h3= piece.showcase
           .modal-footer
             = link_to 'Editar', edit_exhibition_piece_path(piece.exhibition,piece), class: "btn btn-default"

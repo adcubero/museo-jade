@@ -1,13 +1,14 @@
-= form_for @exhibition_image, @path do |f|
-  - if @exhibition_image.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@exhibition_image.errors.count, "error")} prohibited this exhibition_image from being saved:"
-      %ul
-        - @exhibition_image.errors.full_messages.each do |msg|
-          %li= msg
+.jumbotron.exhibition-item
+  = form_for @exhibition_image, @path do |f|
+    - if @exhibition_image.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@exhibition_image.errors.count, "error")} prohibited this exhibition_image from being saved:"
+        %ul
+          - @exhibition_image.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :file
-    = f.file_field :file
-  .actions
-    = f.submit 'Save'
+    .field
+      %label Foto
+      = f.file_field :file
+    .actions
+      = f.submit 'Guardar', class: "btn btn-success"

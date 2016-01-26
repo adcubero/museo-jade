@@ -1,7 +1,5 @@
-%h1 Editing audioguide
+%h1.green Editar Audioguia
 
 = render 'form'
 
-/ = link_to 'Show', @audioguide
-/ \|
-/ = link_to 'Back', audioguides_path
+= link_to 'Atras', exhibition_audioguides_path(@audioguide.exhibition_id), class: "btn btn-default botonGreen" 

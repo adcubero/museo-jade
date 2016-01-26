@@ -24,7 +24,7 @@ class PiecesController < ApplicationController
   # GET /pieces/1/edit
   def edit
     @piece = Piece.find(params[:id])
-    @path = { url: exhibition_pieces_path(@piece.exhibition_id), html: { method: :post } }
+    @path = { url: "#{exhibition_pieces_path(@piece.exhibition)}/#{@piece.id}", html: { method: :put } }
   end
 
   # POST /pieces
@@ -49,7 +49,7 @@ class PiecesController < ApplicationController
   def update
     respond_to do |format|
       if @piece.update(piece_params)
-        format.html { redirect_to @piece, notice: 'Piece was successfully updated.' }
+        format.html { redirect_to exhibition_pieces_path(@piece.exhibition), notice: 'Piece was successfully updated.' }
         format.json { render :show, status: :ok, location: @piece }
       else
         format.html { render :edit }

@@ -60,7 +60,7 @@ class ExhibitionImagesController < ApplicationController
   def destroy
     @exhibition_image.destroy
     respond_to do |format|
-      format.html { redirect_to exhibition_images_url, notice: 'Exhibition image was successfully destroyed.' }
+      format.html { redirect_to exhibition_exhibition_images_url, notice: 'Exhibition image was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
