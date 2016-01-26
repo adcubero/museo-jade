@@ -23,17 +23,17 @@
   - @exhibition_images.each do |exhibition_image|
     / Button trigger modal
     %li
-      %a{"data-target" => "#"+exhibition_image.id.to_s, "data-toggle" => "modal"}
+      %a{:href => exhibition_image.file_url, :target => "_blank"}
         %img{:alt => "Smiley face", :height => "200", :src => exhibition_image.file_url, :width => "200"}/
     /%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}= piece.name
     / Modal
-    .modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => exhibition_image.id.to_s}
-      .modal-dialog{:role => "document"}
-        .modal-content
-          .modal-header
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-          .modal-body
-            %img{:alt => "Smiley face", :src => exhibition_image.file_url}/
-          .modal-footer
-            = link_to 'Borrar', exhibition_exhibition_image_path(exhibition_image.exhibition,exhibition_image), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
+    / .modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1", :id => exhibition_image.id.to_s}
+    /   .modal-dialog{:role => "document"}
+    /     .modal-content
+    /       .modal-header
+    /         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+    /           %span{"aria-hidden" => "true"} ×
+    /       .modal-body
+    /         %img{:alt => "Smiley face", :src => exhibition_image.file_url}/
+    /       .modal-footer
+    /         = link_to 'Borrar', exhibition_exhibition_image_path(exhibition_image.exhibition,exhibition_image), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"

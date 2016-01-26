@@ -38871,3 +38871,102 @@ Processing by EventsController#index as JSON
   [1m[35mEvent Load (0.2ms)[0m  SELECT "events".* FROM "events"
   Rendered events/index.json.jbuilder (42.3ms)
 Completed 200 OK in 47ms (Views: 45.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-01-26 03:24:24 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (19.3ms)
+Completed 200 OK in 238ms (Views: 214.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-01-26 03:24:27 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 64ms (Views: 54.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-26 03:24:29 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionImage Load (0.3ms)[0m  [1mSELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 173ms (Views: 85.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/exhibitions/4/exhibition_images/new" for 127.0.0.1 at 2016-01-26 03:24:31 -0600
+Processing by ExhibitionImagesController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-01-26 03:24:31 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.haml (2.6ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (16.8ms)
+Completed 200 OK in 137ms (Views: 124.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-01-26 03:24:40 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6pAm2zFOMY34hu/KOUkSeIEl4iSEtuqT5ClyGYB1jOy7QpnP9X91oXCpD8C47Xc+FAhaNWVgMHfv5XITjLAqyQ==", "user"=>{"email"=>"adcubero@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "adcubero@hotmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-01-26 08:27:02.116000"], ["current_sign_in_at", "2016-01-26 09:24:40.835272"], ["sign_in_count", 7], ["updated_at", "2016-01-26 09:24:40.836275"], ["id", 1]]
+  [1m[36m (44.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/4/exhibition_images/new
+Completed 302 Found in 182ms (ActiveRecord: 45.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_images/new" for 127.0.0.1 at 2016-01-26 03:24:40 -0600
+Processing by ExhibitionImagesController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_images/_form.html.haml (22.1ms)
+  Rendered exhibition_images/new.html.haml within layouts/application (35.5ms)
+Completed 200 OK in 182ms (Views: 174.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-26 03:24:46 -0600
+Processing by ExhibitionImagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KFUwIBLiCcd+/1X9VFIMMB3bZxHRkqt4BQQkzr8RRJu0IjTdn7QVTt6rEv0Hwsir/4IXnZEQQyB/CGhBrOimpA==", "exhibition_image"=>{"file"=>#<ActionDispatch::Http::UploadedFile:0x007f3e95f46ae8 @tempfile=#<Tempfile:/tmp/RackMultipart20160126-4373-1015wnt.jpg>, @original_filename="Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"exhibition_image[file]\"; filename=\"Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Guardar", "exhibition_id"=>"4"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "exhibition_images" ("file", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["file", "Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg"], ["exhibition_id", 4], ["created_at", "2016-01-26 09:24:46.788376"], ["updated_at", "2016-01-26 09:24:46.788376"]]
+  [1m[35m (25.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/4/exhibition_images
+Completed 302 Found in 6236ms (ActiveRecord: 26.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_images" for 127.0.0.1 at 2016-01-26 03:24:53 -0600
+Processing by ExhibitionImagesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionImage Load (0.1ms)[0m  SELECT "exhibition_images".* FROM "exhibition_images" WHERE "exhibition_images"."exhibition_id" = ?  [["exhibition_id", 4]]
+  Rendered exhibition_images/index.html.haml within layouts/application (62.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 125ms (Views: 122.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-01-26 03:25:34 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (3.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 69ms (Views: 68.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/4/edit" for 127.0.0.1 at 2016-01-26 03:25:36 -0600
+Processing by ExhibitionsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/_form.html.haml (3.7ms)
+  Rendered exhibitions/edit.html.haml within layouts/application (19.0ms)
+Completed 200 OK in 84ms (Views: 79.7ms | ActiveRecord: 0.2ms)
