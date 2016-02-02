@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126011047) do
+ActiveRecord::Schema.define(version: 20160202002853) do
 
   create_table "audioguides", force: :cascade do |t|
     t.string   "name"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 20160126011047) do
 
   add_index "exhibition_images", ["exhibition_id"], name: "index_exhibition_images_on_exhibition_id"
 
+  create_table "exhibition_informations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "miniDescription"
+    t.string   "language"
+    t.integer  "exhibition_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "exhibition_informations", ["exhibition_id"], name: "index_exhibition_informations_on_exhibition_id"
+
   create_table "exhibitions", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -63,6 +75,17 @@ ActiveRecord::Schema.define(version: 20160126011047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "piece_informs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "language"
+    t.integer  "piece_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "piece_informs", ["piece_id"], name: "index_piece_informs_on_piece_id"
 
   create_table "pieces", force: :cascade do |t|
     t.string   "name"

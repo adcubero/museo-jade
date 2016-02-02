@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @exhibition_information.name
+%p
+  %b Description:
+  = @exhibition_information.description
+%p
+  %b Minidescription:
+  = @exhibition_information.miniDescription
+%p
+  %b Language:
+  = @exhibition_information.language
+%p
+  %b Exhibition:
+  = @exhibition_information.exhibition
+
+= link_to 'Edit', edit_exhibition_information_path(@exhibition_information)
+\|
+= link_to 'Back', exhibition_informations_path

@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :items
   resources :exhibitions do
     resources :exhibition_images
-    resources :pieces 
     resources :audioguides
+    resources :exhibition_informations
+    resources :pieces do
+      resources :piece_informs
+    end
   end
 
   root :to => redirect('exhibitions')

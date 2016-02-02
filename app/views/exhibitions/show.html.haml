@@ -14,5 +14,7 @@
     %br
     = link_to 'Editar', edit_exhibition_path(@exhibition), class: "btn btn-default btn-block botonGreen"
     %br
+    = link_to 'Otros Idiomas', exhibition_exhibition_informations_path(@exhibition.id), class: "btn btn-default btn-block botonGreen"
+    %br
 %h3.white= @exhibition.description
 

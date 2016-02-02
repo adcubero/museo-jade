@@ -1,0 +1,5 @@
+%h1 Editing piece_inform
+
+= render 'form'
+
+= link_to 'Back', exhibition_piece_piece_informs_path(Piece.find(params[:piece_id]).exhibition,@piece_inform.piece_id)

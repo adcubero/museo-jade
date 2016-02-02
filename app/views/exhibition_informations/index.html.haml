@@ -1,0 +1,25 @@
+%h1 Listing exhibition_informations
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Minidescription
+      %th Language
+      %th
+      %th
+
+  %tbody
+    - @exhibition_informations.each do |exhibition_information|
+      %tr
+        %td= exhibition_information.name
+        %td= exhibition_information.description
+        %td= exhibition_information.miniDescription
+        %td= exhibition_information.language
+        %td= link_to 'Edit', edit_exhibition_exhibition_information_path(exhibition_information.exhibition,exhibition_information)
+        %td= link_to 'Destroy', exhibition_exhibition_information_path(exhibition_information.exhibition,exhibition_information), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exhibition information', new_exhibition_exhibition_information_path

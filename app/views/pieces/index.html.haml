@@ -58,6 +58,7 @@
             %h3= piece.showcase
           .modal-footer
             = link_to 'Editar', edit_exhibition_piece_path(piece.exhibition,piece), class: "btn btn-default"
+            = link_to 'Otros Idiomas', exhibition_piece_piece_informs_path(piece.exhibition,piece.id), class: "btn btn-default botonGreen"
             = link_to 'Borrar', exhibition_piece_path(piece.exhibition,piece), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
 
 

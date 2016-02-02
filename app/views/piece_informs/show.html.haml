@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @piece_inform.name
+%p
+  %b Description:
+  = @piece_inform.description
+%p
+  %b Language:
+  = @piece_inform.language
+%p
+  %b Piece:
+  = @piece_inform.piece
+
+= link_to 'Edit', edit_piece_inform_path(@piece_inform)
+\|
+= link_to 'Back', piece_informs_path

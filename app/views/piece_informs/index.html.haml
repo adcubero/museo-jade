@@ -1,0 +1,23 @@
+%h1 Listing piece_informs
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Language
+      %th
+      %th
+
+  %tbody
+    - @piece_informs.each do |piece_inform|
+      %tr
+        %td= piece_inform.name
+        %td= piece_inform.description
+        %td= piece_inform.language
+        %td= link_to 'Edit', edit_exhibition_piece_piece_inform_path(Piece.find(params[:piece_id]).exhibition,piece_inform.piece,piece_inform)
+        %td= link_to 'Destroy', exhibition_piece_piece_inform_path(Piece.find(params[:piece_id]).exhibition,piece_inform.piece,piece_inform), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Piece inform', new_exhibition_piece_piece_inform_path

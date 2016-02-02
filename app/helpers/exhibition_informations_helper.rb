@@ -1,0 +1,2 @@
+module ExhibitionInformationsHelper
+end
