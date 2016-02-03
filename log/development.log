@@ -42096,3 +42096,752 @@ Processing by PieceInformsController#index as JSON
   [1m[35mPieceInform Load (0.6ms)[0m  SELECT "piece_informs".* FROM "piece_informs" WHERE (language LIKE '%aa%')  ORDER BY created_at DESC
   Rendered piece_informs/index.json.jbuilder (11.4ms)
 Completed 200 OK in 75ms (Views: 67.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json?search=spanish" for 127.0.0.1 at 2016-02-02 20:26:19 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"search"=>"spanish", "exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.8ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%spanish%')  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (65.3ms)
+Completed 500 Internal Server Error in 613ms (ActiveRecord: 4.3ms)
+
+ActionView::Template::Error (#<FileUploader:0x007f8bec6068f8 @model=#<Exhibition id: 4, name: "aa", description: "aa", miniDescription: "aa", item_id: nil, created_at: "2016-01-26 02:16:36", updated_at: "2016-01-26 02:16:36", file: nil>, @mounted_as=:file> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471077520'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471077520'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (23.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (143.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (102.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (205.0ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-02 20:27:05 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.6ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (44.9ms)
+Completed 200 OK in 2054ms (Views: 2050.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-02 20:27:13 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mExhibition Load (9.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (37.6ms)
+Completed 200 OK in 1204ms (Views: 1186.2ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 20:27:15 -0600
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (4.7ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (2.1ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (87.2ms)
+Completed 200 OK in 979ms (Views: 958.7ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:27:22 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (1.9ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (8.9ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mExhibition Load (2.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (45.6ms)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 13.1ms)
+
+ActionView::Template::Error (#<FileUploader:0x007f8bed13d0c8 @model=#<Exhibition id: 4, name: "aa", description: "aa", miniDescription: "aa", item_id: nil, created_at: "2016-01-26 02:16:36", updated_at: "2016-01-26 02:16:36", file: nil>, @mounted_as=:file> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471077520'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471077520'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (30.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (20.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (177.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (4.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (185.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (11.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (5.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (376.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:28:05 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (3.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (33.9ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 4.5ms)
+
+ActionView::Template::Error (#<Exhibition id: 4, name: "aa", description: "aa", miniDescription: "aa", item_id: nil, created_at: "2016-01-26 02:16:36", updated_at: "2016-01-26 02:16:36", file: nil> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119473651640'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119473651640'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (25.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (20.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (133.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (4.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (6.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (118.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (5.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (242.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:28:37 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (5.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (0.8ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mExhibition Load (1.8ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (44.4ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 7.7ms)
+
+ActionView::Template::Error (4 is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.id
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119480442240'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119480442240'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (36.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (15.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (133.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (94.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (224.6ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:29:00 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (8.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (4.5ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (6.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (36.5ms)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 19.2ms)
+
+ActionView::Template::Error (#<FileUploader:0x007f8bec690670 @model=#<Exhibition id: 4, name: "aa", description: "aa", miniDescription: "aa", item_id: nil, created_at: "2016-01-26 02:16:36", updated_at: "2016-01-26 02:16:36", file: nil>, @mounted_as=:file> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471962920'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471962920'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (22.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (129.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (2.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (4.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (142.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (2.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (6.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (286.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:29:49 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (11.9ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (0.8ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mExhibition Load (0.4ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (31.8ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 13.1ms)
+
+ActionView::Template::Error (undefined method `' for #<ExhibitionInformation:0x007f8becf10818>):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.file.to_s
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119475864980'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119475864980'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (27.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (22.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (11.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (175.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (3.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (2.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (216.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (412.3ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:30:12 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.7ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (6.5ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (56.6ms)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 10.2ms)
+
+ActionView::Template::Error (undefined method `exhibition' for :exhibition_information:Symbol):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, :exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119608835680'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119608835680'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (51.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (19.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (172.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (118.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (242.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:30:30 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (1.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (3.9ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (47.7ms)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 9.4ms)
+
+ActionView::Template::Error (#<FileUploader:0x007f8bec3f9b50 @model=#<Exhibition id: 4, name: "aa", description: "aa", miniDescription: "aa", item_id: nil, created_at: "2016-01-26 02:16:36", updated_at: "2016-01-26 02:16:36", file: nil>, @mounted_as=:file> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119470559660'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119470559660'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (23.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (137.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (150.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (10.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (274.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 20:31:01 -0600
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (3.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (9.8ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mExhibition Load (11.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (53.8ms)
+Completed 200 OK in 718ms (Views: 690.3ms | ActiveRecord: 24.2ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-02 20:31:04 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.6ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (37.3ms)
+Completed 200 OK in 776ms (Views: 773.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/exhibitions/4/edit" for 127.0.0.1 at 2016-02-02 20:31:07 -0600
+Processing by ExhibitionsController#edit as HTML
+  Parameters: {"id"=>"4"}
+Completed 401 Unauthorized in 37ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-02-02 20:31:07 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.haml (19.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (197.7ms)
+Completed 200 OK in 1036ms (Views: 990.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-02-02 20:31:16 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Un7NUDMoh7pdjz4nOVn65TUYOFmtZeKxEXld43UuRe4abuLzRp1PGPBk8j8XtvnLRDoNZCSxW0Qz6ChVkPQFWQ==", "user"=>{"email"=>"adcubero@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (4.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "adcubero@hotmail.com"]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-02-02 00:49:55.115396"], ["current_sign_in_at", "2016-02-03 02:31:17.601700"], ["sign_in_count", 9], ["updated_at", "2016-02-03 02:31:17.610459"], ["id", 1]]
+  [1m[36m (163.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/4/edit
+Completed 302 Found in 1004ms (ActiveRecord: 169.9ms)
+
+
+Started GET "/exhibitions/4/edit" for 127.0.0.1 at 2016-02-02 20:31:17 -0600
+Processing by ExhibitionsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (4.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/_form.html.haml (39.7ms)
+  Rendered exhibitions/edit.html.haml within layouts/application (73.5ms)
+Completed 200 OK in 868ms (Views: 755.3ms | ActiveRecord: 4.7ms)
+
+
+Started PATCH "/exhibitions/4" for 127.0.0.1 at 2016-02-02 20:31:26 -0600
+Processing by ExhibitionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"212W0M+4AKfh5kAeoWu3Mqj541TA7sCdSgjI68Cegw3yd+NFOLMbcA/O6jCWgXbkOHQZd1iRLVur2ujnU4MQoQ==", "exhibition"=>{"name"=>"aa", "description"=>"aa", "miniDescription"=>"aa", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f8bed17af68 @tempfile=#<Tempfile:/tmp/RackMultipart20160202-2633-1pbfo02.jpg>, @original_filename="Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"exhibition[file]\"; filename=\"Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Guardar", "id"=>"4"}
+  [1m[35mUser Load (7.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mExhibition Load (0.5ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mSQL (13.3ms)[0m  UPDATE "exhibitions" SET "file" = ?, "updated_at" = ? WHERE "exhibitions"."id" = ?  [["file", "Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg"], ["updated_at", "2016-02-03 02:31:27.044273"], ["id", 4]]
+  [1m[36m (282.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/4
+Completed 302 Found in 1956ms (ActiveRecord: 304.1ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-02 20:31:28 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mExhibition Load (0.5ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (25.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 683ms (Views: 678.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 20:31:33 -0600
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (1.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (2.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (23.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 384ms (Views: 367.2ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:31:39 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (7.7ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (4.0ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (34.6ms)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 12.1ms)
+
+ActionView::Template::Error (#<FileUploader:0x007f8bed35a860 @model=#<Exhibition id: 4, name: "aa", description: "aa", miniDescription: "aa", item_id: nil, created_at: "2016-01-26 02:16:36", updated_at: "2016-02-03 02:31:27", file: "Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA201405...">, @mounted_as=:file, @file=#<CarrierWave::Storage::Fog::File:0x007f8bed359578 @uploader=#<FileUploader:0x007f8bed35a860 ...>, @base=#<CarrierWave::Storage::Fog:0x007f8bed35a388 @uploader=#<FileUploader:0x007f8bed35a860 ...>>, @path="uploads/exhibition/file/4/Museo-Jade-precolombinas-ALBERT-MARIN_LNCIMA20140506_0019_3.jpg">, @versions={}, @storage=#<CarrierWave::Storage::Fog:0x007f8bed35a388 @uploader=#<FileUploader:0x007f8bed35a860 ...>>> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119470559660'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119470559660'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (62.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (30.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (250.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (8.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (152.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (295.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:32:45 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (2.5ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.8ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (24.5ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 3.2ms)
+
+ActionView::Template::Error (undefined method `exhibition' for nil:NilClass):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, @exhibition_information.exhibition.file
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119473334440'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119473334440'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (30.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (163.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (115.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (246.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:32:59 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (1.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (5.5ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (18.1ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 7.2ms)
+
+ActionView::Template::Error (2 is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, 2
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119475864300'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119475864300'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (25.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (119.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (4.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (115.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (253.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:33:10 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (4.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (9.6ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (27.8ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 14.0ms)
+
+ActionView::Template::Error (undefined method `sss' for #<ExhibitionInformation:0x007f8bece35b78>):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, "sss"
+    3: 
+    4: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471853640'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119471853640'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (62.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (25.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (11.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (285.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (148.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (8.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (8.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (291.6ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:33:35 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (2.2ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (165.4ms)
+Completed 500 Internal Server Error in 197ms (ActiveRecord: 2.6ms)
+
+ActionView::Template::Error (undefined local variable or method `exhibition_information' for #<#<Class:0x007f8bec515318>:0x007f8bfb341e38>):
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id
+    3: 
+    4: end
+    5: exhibition_information.exhibition.file
+  app/views/exhibition_informations/index.json.jbuilder:5:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119595735120'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (23.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (127.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (6.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (141.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (273.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:33:51 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.8ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (24.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (642.2ms)
+Completed 200 OK in 671ms (Views: 637.8ms | ActiveRecord: 28.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:34:35 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (1.8ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (3.5ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered exhibition_informations/index.json.jbuilder (25.0ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 5.6ms)
+
+ActionView::Template::Error (#<User id: 1, email: "adcubero@hotmail.com", encrypted_password: "$2a$10$E/y1VXUMxbN6y9x7E5wg4eQ35WZNeUlOCFlsd2Zwa7I...", reset_password_token: "ea17dda82239507ae9b5b241b92bcacc5b98cd0989261e775b...", reset_password_sent_at: "2016-01-26 08:21:14", remember_created_at: nil, sign_in_count: 9, current_sign_in_at: "2016-02-03 02:31:17", last_sign_in_at: "2016-02-02 00:49:55", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", created_at: "2016-01-26 01:17:41", updated_at: "2016-02-03 02:31:17"> is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, current_user
+    3: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119611117640'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119611117640'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (38.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (15.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (143.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (5.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (99.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (197.6ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:36:33 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (2.9ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (5.8ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mUser Load (6.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered exhibition_informations/index.json.jbuilder (59.3ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 15.5ms)
+
+ActionView::Template::Error (1 is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, current_user.id
+    3: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119613260740'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119613260740'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (24.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (14.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (120.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (110.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (205.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:41:00 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (4.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (22.1ms)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 5.2ms)
+
+ActionView::Template::Error (undefined method `id' for :current_user:Symbol):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, :current_user.id
+    3: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119475922900'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119475922900'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (27.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (142.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (11.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (109.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (242.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:41:21 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.8ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (2.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mUser Load (6.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered exhibition_informations/index.json.jbuilder (41.5ms)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 13.2ms)
+
+ActionView::Template::Error (1 is not a symbol nor a string):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, current_user.id
+    3: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119484519880'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119484519880'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (21.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (14.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (150.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (101.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (216.3ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:42:20 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.5ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mExhibitionInformation Load (5.8ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered exhibition_informations/index.json.jbuilder (42.4ms)
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 6.7ms)
+
+ActionView::Template::Error (undefined method `to_sym' for 1:Fixnum):
+    1: json.array!(@exhibition_informations) do |exhibition_information|
+    2:   json.extract! exhibition_information, :id, :name, :description, :miniDescription, :language, :exhibition_id, current_user.id.to_sym
+    3: end
+  app/views/exhibition_informations/index.json.jbuilder:2:in `block in _app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119473949800'
+  app/views/exhibition_informations/index.json.jbuilder:1:in `_app_views_exhibition_informations_index_json_jbuilder__2448416505428701718_70119473949800'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (23.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (22.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (152.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (126.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (275.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 20:44:14 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.9ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (6.4ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (19.2ms)
+Completed 200 OK in 51ms (Views: 36.9ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/exhibitions/4/" for 127.0.0.1 at 2016-02-02 22:14:23 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (5.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 121ms (Views: 118.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/4/pieces" for 127.0.0.1 at 2016-02-02 22:14:27 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.3ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.html.haml within layouts/application (34.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 217ms (Views: 180.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs" for 127.0.0.1 at 2016-02-02 22:14:30 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs"  ORDER BY created_at DESC
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (3.2ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (58.5ms)
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 509ms (Views: 491.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs.json" for 127.0.0.1 at 2016-02-02 22:14:33 -0600
+Processing by PieceInformsController#index as JSON
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs"  ORDER BY created_at DESC[0m
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered piece_informs/index.json.jbuilder (8.0ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.4ms)
