@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'search_exhibitions' => 'exhibition_informations#search'
+  get 'search_pieces' => 'piece_informs#search'
+
+
+
   root :to => redirect('exhibitions')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

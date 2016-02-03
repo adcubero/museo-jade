@@ -6,9 +6,11 @@ class PieceInformsController < ApplicationController
   def index
     @piece = Piece.find(params[:piece_id])
     @piece_informs = @piece.piece_informs
+  end
 
+  def search
     if params[:search]
-      @piece_informs = PieceInform.search(params[:search]).order("created_at DESC")
+      @piece_informs = PieceInform.joins(:piece).where('pieces.exhibition_id' => params[:exhibition_id]).search(params[:search]).order("created_at DESC")
     else
       @piece_informs = PieceInform.all.order('created_at DESC')
     end
@@ -18,6 +20,7 @@ class PieceInformsController < ApplicationController
   # GET /piece_informs/1.json
   def show
   end
+
 
   # GET /piece_informs/new
   def new

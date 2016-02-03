@@ -6,13 +6,14 @@ class ExhibitionInformationsController < ApplicationController
   def index
     @exhibition = Exhibition.find(params[:exhibition_id])
     @exhibition_informations = @exhibition.exhibition_informations
+  end
 
+  def search
     if params[:search]
       @exhibition_informations = ExhibitionInformation.search(params[:search]).order("created_at DESC")
     else
       @exhibition_informations = ExhibitionInformation.all.order('created_at DESC')
     end
-
   end
 
   # GET /exhibition_informations/1
