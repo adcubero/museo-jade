@@ -57,6 +57,7 @@
             %h3= audioguide.text
           .modal-footer
             = link_to 'Editar', edit_exhibition_audioguide_path(audioguide.exhibition,audioguide), class: "btn btn-default"
+            = link_to 'Otros Idiomas', exhibition_audioguide_audioguide_informs_path(audioguide.exhibition,audioguide.id), class: "btn btn-default botonGreen"
             = link_to 'Borrar', exhibition_audioguide_path(audioguide.exhibition,audioguide), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-default"
 
 

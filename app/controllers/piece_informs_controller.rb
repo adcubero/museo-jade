@@ -12,7 +12,7 @@ class PieceInformsController < ApplicationController
     if params[:search]
       @piece_informs = PieceInform.joins(:piece).where('pieces.exhibition_id' => params[:exhibition_id]).search(params[:search]).order("created_at DESC")
     else
-      @piece_informs = PieceInform.all.order('created_at DESC')
+      @piece_informs = PieceInform.joins(:piece).where('pieces.exhibition_id' => params[:exhibition_id])
     end
   end
 

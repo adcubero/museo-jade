@@ -44571,3 +44571,1481 @@ Processing by PieceInformsController#search as JSON
   [1m[35mPiece Load (0.2ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 6]]
   Rendered piece_informs/search.json.jbuilder (6.3ms)
 Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search_pieces.json" for 127.0.0.1 at 2016-02-03 14:11:51 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PieceInformsController#search as JSON
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs"  ORDER BY created_at DESC
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered piece_informs/search.json.jbuilder (164.5ms)
+Completed 200 OK in 281ms (Views: 224.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/search_exhibition.json?search=english" for 127.0.0.1 at 2016-02-03 14:12:46 -0600
+
+ActionController::RoutingError (No route matches [GET] "/search_exhibition.json"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (69.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (18.9ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (40.7ms)
+
+
+Started GET "/search_exhibitions.json?search=english" for 127.0.0.1 at 2016-02-03 14:12:52 -0600
+Processing by ExhibitionInformationsController#search as JSON
+  Parameters: {"search"=>"english"}
+  [1m[36mExhibitionInformation Load (0.2ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%english%')  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/search.json.jbuilder (31.0ms)
+Completed 200 OK in 49ms (Views: 32.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/search_exhibitions.json?search=english" for 127.0.0.1 at 2016-02-03 14:13:04 -0600
+Processing by ExhibitionInformationsController#search as JSON
+  Parameters: {"search"=>"english"}
+  [1m[35mExhibitionInformation Load (0.2ms)[0m  SELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%english%')  ORDER BY created_at DESC
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/search.json.jbuilder (6.3ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAudioguideInforms (20160203225021)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "audioguide_informs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "text" text, "audioguide_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_audioguide_informs_on_audioguide_id" ON "audioguide_informs" ("audioguide_id")[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160203225021"]]
+  [1m[36m (15.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguide_informs_on_audioguide_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguide_informs_on_audioguide_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguides_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguides_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_informations_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_informations_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.6ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_piece_informs_on_piece_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_piece_informs_on_piece_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAudioguideInforms (20160203225021)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  DROP TABLE "audioguide_informs"
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20160203225021"]]
+  [1m[35m (73.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguides_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguides_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_informations_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_informations_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_piece_informs_on_piece_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_piece_informs_on_piece_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAudioguideInforms (20160203225021)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "audioguide_informs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "text" text, "language" varchar, "audioguide_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_audioguide_informs_on_audioguide_id" ON "audioguide_informs" ("audioguide_id")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160203225021"]]
+  [1m[36m (137.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguide_informs_on_audioguide_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguide_informs_on_audioguide_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_audioguides_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_audioguides_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_images_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibition_informations_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibition_informations_on_exhibition_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_exhibitions_on_item_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_piece_informs_on_piece_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_piece_informs_on_piece_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_exhibition_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pieces_on_item_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-03 17:18:09 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 644ms (Views: 612.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/audioguide_informs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-03 17:18:10 -0600
+
+
+Started GET "/assets/audioguide_informs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-03 17:18:10 -0600
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-03 17:18:12 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 291ms (Views: 282.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/audioguides" for 127.0.0.1 at 2016-02-03 17:18:15 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.2ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered audioguides/index.html.haml within layouts/application (9.3ms)
+Completed 200 OK in 225ms (Views: 148.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/4/audioguides/new" for 127.0.0.1 at 2016-02-03 17:18:17 -0600
+Processing by AudioguidesController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+Completed 401 Unauthorized in 29ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-02-03 17:18:17 -0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.haml (2.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (46.0ms)
+Completed 200 OK in 161ms (Views: 139.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-02-03 17:18:22 -0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sILL2hnizp1h+1A3uiwT89PawISL1i51ryYIssz6sX3ArtDTbNu/+X/MAbT6MX/t5fNwRH88NxBV8G+TW1GP4A==", "user"=>{"email"=>"adcubero@hotmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "adcubero@hotmail.com"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2016-02-03 09:06:20.763675"], ["current_sign_in_at", "2016-02-03 23:18:22.929721"], ["sign_in_count", 11], ["updated_at", "2016-02-03 23:18:22.930735"], ["id", 1]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/4/audioguides/new
+Completed 302 Found in 264ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/exhibitions/4/audioguides/new" for 127.0.0.1 at 2016-02-03 17:18:22 -0600
+Processing by AudioguidesController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguides/_form.html.haml (13.8ms)
+  Rendered audioguides/new.html.haml within layouts/application (41.6ms)
+Completed 200 OK in 171ms (Views: 161.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/exhibitions/4/audioguides" for 127.0.0.1 at 2016-02-03 17:18:31 -0600
+Processing by AudioguidesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XVf25PfwvyoFuZAyeWu43Y1ejrWSCeWR3iWFBFVJwtpUCkuif15UdScNxPeBN3ql0wC3r48pcvAVYkYWEICD8g==", "audioguide"=>{"name"=>"qq", "description"=>"qq", "text"=>"qq", "key"=>"0", "id1"=>"0", "id2"=>"0"}, "commit"=>"Guardar", "exhibition_id"=>"4"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "audioguides" ("name", "description", "text", "key", "id1", "id2", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "qq"], ["description", "qq"], ["text", "qq"], ["key", "0"], ["id1", 0], ["id2", 0], ["exhibition_id", 4], ["created_at", "2016-02-03 23:18:31.728135"], ["updated_at", "2016-02-03 23:18:31.728135"]]
+  [1m[35m (121.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/4/audioguides
+Completed 302 Found in 133ms (ActiveRecord: 124.3ms)
+
+
+Started GET "/exhibitions/4/audioguides" for 127.0.0.1 at 2016-02-03 17:18:31 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?  [["exhibition_id", 4]]
+  Rendered audioguides/index.html.haml within layouts/application (7.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 126ms (Views: 124.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:34 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[35mAudioguide Load (0.2ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?[0m  [["audioguide_id", 14]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (3.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 89ms (Views: 84.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs/new" for 127.0.0.1 at 2016-02-03 17:18:35 -0600
+Processing by AudioguideInformsController#new as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/_form.html.haml (39.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered audioguide_informs/new.html.haml within layouts/application (43.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 127ms (Views: 112.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:41 -0600
+Processing by AudioguideInformsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E8ELUlOx5bwMrKYF9zTEJF9SQpgaCbgYRMK2bF3OX/EanLYU2x8O4y4Y8sAPaAZcAQx7ggcpL3mPhXV+GAce2Q==", "audioguide_inform"=>{"name"=>"qq", "description"=>"qq", "text"=>"qq", "audioguide"=>"#<Audioguide:0x007f3051eff2d0>", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"4", "audioguide_id"=>"14"}
+Unpermitted parameter: audioguide
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "audioguide_informs" ("name", "description", "text", "language", "audioguide_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["name", "qq"], ["description", "qq"], ["text", "qq"], ["language", "english"], ["audioguide_id", 14], ["created_at", "2016-02-03 23:18:41.471199"], ["updated_at", "2016-02-03 23:18:41.471199"]]
+  [1m[36m (70.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+Redirected to http://localhost:3000/exhibitions/4/audioguides/14/audioguide_informs
+Completed 302 Found in 78ms (ActiveRecord: 73.5ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:41 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?[0m  [["audioguide_id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mExhibition Load (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (5.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 82ms (Views: 80.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs/1/edit" for 127.0.0.1 at 2016-02-03 17:18:43 -0600
+Processing by AudioguideInformsController#edit as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14", "id"=>"1"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mAudioguide Load (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mExhibition Load (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  Rendered audioguide_informs/_form.html.haml (2.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/edit.html.haml within layouts/application (6.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 75ms (Views: 71.8ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/exhibitions/4/audioguides/14/audioguide_informs/1" for 127.0.0.1 at 2016-02-03 17:18:45 -0600
+Processing by AudioguideInformsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MGHbvrX4Xf/f7nB8S2K6lCADwuHf2XxvOJwC6alOrJk5PGb4PVa2oP1aJLmzPnjsfl37+8L56w7z28H77IftsQ==", "audioguide_inform"=>{"name"=>"qqw", "description"=>"qq", "text"=>"qq", "audioguide"=>"#<Audioguide:0x007f3051e82960>", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"4", "audioguide_id"=>"14", "id"=>"1"}
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1[0m  [["id", 1]]
+Unpermitted parameter: audioguide
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.4ms)[0m  [1mUPDATE "audioguide_informs" SET "name" = ?, "updated_at" = ? WHERE "audioguide_informs"."id" = ?[0m  [["name", "qqw"], ["updated_at", "2016-02-03 23:18:45.013867"], ["id", 1]]
+  [1m[35m (102.2ms)[0m  commit transaction
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+Redirected to http://localhost:3000/exhibitions/4/audioguides/14/audioguide_informs
+Completed 302 Found in 112ms (ActiveRecord: 105.0ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:45 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?[0m  [["audioguide_id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (3.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 80ms (Views: 78.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs/1/edit" for 127.0.0.1 at 2016-02-03 17:18:46 -0600
+Processing by AudioguideInformsController#edit as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14", "id"=>"1"}
+  [1m[36mAudioguideInform Load (1.1ms)[0m  [1mSELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  Rendered audioguide_informs/_form.html.haml (2.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/edit.html.haml within layouts/application (5.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 89ms (Views: 82.5ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/exhibitions/4/audioguides/14/audioguide_informs/1" for 127.0.0.1 at 2016-02-03 17:18:49 -0600
+Processing by AudioguideInformsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cf8JS9bPxnm9KPDjjD0mmcryYTz3DzRHEMWVnMl9Sfl4orQNXmEtJp+cpCZ0YeThlKxYJuovoybbglaOjLQI0Q==", "audioguide_inform"=>{"name"=>"qq", "description"=>"qq", "text"=>"qq", "audioguide"=>"#<Audioguide:0x007f3051cf8748>", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"4", "audioguide_id"=>"14", "id"=>"1"}
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1[0m  [["id", 1]]
+Unpermitted parameter: audioguide
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.9ms)[0m  [1mUPDATE "audioguide_informs" SET "name" = ?, "updated_at" = ? WHERE "audioguide_informs"."id" = ?[0m  [["name", "qq"], ["updated_at", "2016-02-03 23:18:49.373001"], ["id", 1]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mExhibition Load (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+Redirected to http://localhost:3000/exhibitions/4/audioguides/14/audioguide_informs
+Completed 302 Found in 19ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:49 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?[0m  [["audioguide_id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (3.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 82ms (Views: 80.0ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/exhibitions/4/audioguides/14/audioguide_informs/1" for 127.0.0.1 at 2016-02-03 17:18:51 -0600
+Processing by AudioguideInformsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+oX3+5QRlSuu5eyCVc6twBUdCFe+Oyil4zOkH7WKborz2Eq9HL9+dIxRuEetkm+4S0MxTaMbv8QodGcN8EMvog==", "exhibition_id"=>"4", "audioguide_id"=>"14", "id"=>"1"}
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT  "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "audioguide_informs" WHERE "audioguide_informs"."id" = ?[0m  [["id", 1]]
+  [1m[35m (487.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/exhibitions/4/audioguides/14/audioguide_informs
+Completed 302 Found in 492ms (ActiveRecord: 488.4ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:51 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 14]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (3.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 98ms (Views: 94.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs/new" for 127.0.0.1 at 2016-02-03 17:18:52 -0600
+Processing by AudioguideInformsController#new as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[35mAudioguide Load (0.2ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mExhibition Load (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  Rendered audioguide_informs/_form.html.haml (3.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/new.html.haml within layouts/application (4.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 92ms (Views: 88.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:57 -0600
+Processing by AudioguideInformsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y2NRZRM5I2tsj8NqoHaxBm1uL/JtEuebub4BGnTJGKfCPuwjm5fINE47l69YKnN+MzAW6HAycPpy+cIIMQBZjw==", "audioguide_inform"=>{"name"=>"qq", "description"=>"qq", "text"=>"qq", "audioguide"=>"#<Audioguide:0x007f30629b1d08>", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"4", "audioguide_id"=>"14"}
+Unpermitted parameter: audioguide
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "audioguide_informs" ("name", "description", "text", "language", "audioguide_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "qq"], ["description", "qq"], ["text", "qq"], ["language", "english"], ["audioguide_id", 14], ["created_at", "2016-02-03 23:18:57.698923"], ["updated_at", "2016-02-03 23:18:57.698923"]]
+  [1m[35m (11.8ms)[0m  commit transaction
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+Redirected to http://localhost:3000/exhibitions/4/audioguides/14/audioguide_informs
+Completed 302 Found in 36ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:18:57 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (4.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 86ms (Views: 83.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs/new" for 127.0.0.1 at 2016-02-03 17:19:02 -0600
+Processing by AudioguideInformsController#new as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  Rendered audioguide_informs/_form.html.haml (3.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered audioguide_informs/new.html.haml within layouts/application (5.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 80ms (Views: 77.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:19:10 -0600
+Processing by AudioguideInformsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nBpf5Ivmx1AqoMffTyGzTMrl9P6VhltXHAPHNrUhbauVR+KiA0gsDwgUkxq3fXE0lLvN5IimzDbXRAQk8Ogsgw==", "audioguide_inform"=>{"name"=>"ww", "description"=>"ww", "text"=>"ww", "audioguide"=>"#<Audioguide:0x007f30623faf90>", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"4", "audioguide_id"=>"14"}
+Unpermitted parameter: audioguide
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "audioguide_informs" ("name", "description", "text", "language", "audioguide_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "ww"], ["description", "ww"], ["text", "ww"], ["language", "english"], ["audioguide_id", 14], ["created_at", "2016-02-03 23:19:10.658292"], ["updated_at", "2016-02-03 23:19:10.658292"]]
+  [1m[35m (111.3ms)[0m  commit transaction
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mExhibition Load (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+Redirected to http://localhost:3000/exhibitions/4/audioguides/14/audioguide_informs
+Completed 302 Found in 120ms (ActiveRecord: 113.4ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:19:10 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mExhibition Load (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (6.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 85ms (Views: 83.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-03 17:20:14 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (1.1ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (9.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 86ms (Views: 78.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/exhibitions/5" for 127.0.0.1 at 2016-02-03 17:20:16 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 77ms (Views: 75.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/audioguides" for 127.0.0.1 at 2016-02-03 17:20:17 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAudioguide Load (0.2ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 5]]
+  Rendered audioguides/index.html.haml within layouts/application (3.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 77ms (Views: 69.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/exhibitions/5/audioguides/new" for 127.0.0.1 at 2016-02-03 17:20:18 -0600
+Processing by AudioguidesController#new as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered audioguides/_form.html.haml (3.9ms)
+  Rendered audioguides/new.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 111ms (Views: 82.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/exhibitions/5/audioguides" for 127.0.0.1 at 2016-02-03 17:20:23 -0600
+Processing by AudioguidesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TBRqpQ72Dz+Ea0IPg2/ZqO+Pbar0kyw9xEgFseODXLVFSdfjhljkYKbfFsp7MxvQsdFUsOmzu1wPD8ajpkodnQ==", "audioguide"=>{"name"=>"zz", "description"=>"zz", "text"=>"zz", "key"=>"0", "id1"=>"0", "id2"=>"0"}, "commit"=>"Guardar", "exhibition_id"=>"5"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "audioguides" ("name", "description", "text", "key", "id1", "id2", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["name", "zz"], ["description", "zz"], ["text", "zz"], ["key", "0"], ["id1", 0], ["id2", 0], ["exhibition_id", 5], ["created_at", "2016-02-03 23:20:23.199569"], ["updated_at", "2016-02-03 23:20:23.199569"]]
+  [1m[36m (228.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/5/audioguides
+Completed 302 Found in 243ms (ActiveRecord: 231.0ms)
+
+
+Started GET "/exhibitions/5/audioguides" for 127.0.0.1 at 2016-02-03 17:20:23 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 5]]
+  Rendered audioguides/index.html.haml within layouts/application (1.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 80ms (Views: 78.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/5/audioguides/15/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:20:25 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"5", "audioguide_id"=>"15"}
+  [1m[36mAudioguide Load (0.2ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 15]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (1.5ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 77ms (Views: 71.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/exhibitions/5/audioguides/15/audioguide_informs/new" for 127.0.0.1 at 2016-02-03 17:20:26 -0600
+Processing by AudioguideInformsController#new as HTML
+  Parameters: {"exhibition_id"=>"5", "audioguide_id"=>"15"}
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  Rendered audioguide_informs/_form.html.haml (5.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", "15"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered audioguide_informs/new.html.haml within layouts/application (8.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 97ms (Views: 91.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/exhibitions/5/audioguides/15/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:20:30 -0600
+Processing by AudioguideInformsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LKNBV9NH3NIvEqLnMiED2EKMval4V19CRDkAfuSadY8l/vwRW+k3jQ2m9iLKfcGgHNKEs2V3yCOPfsNsoVM0pw==", "audioguide_inform"=>{"name"=>"zz", "description"=>"zz", "text"=>"zz", "audioguide"=>"#<Audioguide:0x007f3063bf2f80>", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"5", "audioguide_id"=>"15"}
+Unpermitted parameter: audioguide
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "audioguide_informs" ("name", "description", "text", "language", "audioguide_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "zz"], ["description", "zz"], ["text", "zz"], ["language", "english"], ["audioguide_id", 15], ["created_at", "2016-02-03 23:20:30.046704"], ["updated_at", "2016-02-03 23:20:30.046704"]]
+  [1m[35m (149.9ms)[0m  commit transaction
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+Redirected to http://localhost:3000/exhibitions/5/audioguides/15/audioguide_informs
+Completed 302 Found in 161ms (ActiveRecord: 153.3ms)
+
+
+Started GET "/exhibitions/5/audioguides/15/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:20:30 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"5", "audioguide_id"=>"15"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 15]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (4.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 80ms (Views: 78.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-03 17:20:31 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (4.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 82ms (Views: 81.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions/5" for 127.0.0.1 at 2016-02-03 17:20:36 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.7ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 72ms (Views: 70.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/audioguides" for 127.0.0.1 at 2016-02-03 17:20:38 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 5]]
+  Rendered audioguides/index.html.haml within layouts/application (12.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 105ms (Views: 103.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/audioguides/15/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:20:41 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"5", "audioguide_id"=>"15"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 15]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (5.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 143ms (Views: 140.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/exhibitions.json" for 127.0.0.1 at 2016-02-03 17:21:04 -0600
+Processing by ExhibitionsController#index as JSON
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.json.jbuilder (3.2ms)
+Completed 200 OK in 133ms (Views: 132.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_audioguides?exhibition=4" for 127.0.0.1 at 2016-02-03 17:21:26 -0600
+Processing by AudioguideInformsController#search as HTML
+  Parameters: {"exhibition"=>"4"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template audioguide_informs/search, application/search with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :haml, :jbuilder]}. Searched in:
+  * "/home/adrian/Documents/museo-jade/app/views"
+  * "/home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/devise-3.5.5/app/views"
+):
+  actionview (4.2.4) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.4) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.4) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.4) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.4) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.4) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.4) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.4) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.4) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.4) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.4) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.4) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.4) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.4) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.4) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.2.4) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.4) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.4) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.4) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.4) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.4) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.4) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.4) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `call'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.4) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.4) lib/action_dispatch/routing/route_set.rb:821:in `call'
+  warden (1.2.4) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.4) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.4) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.4) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /home/adrian/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (28.1ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (17.2ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (36.4ms)
+
+
+Started GET "/search_audioguides.json?exhibition=4" for 127.0.0.1 at 2016-02-03 17:21:32 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"4"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (7.9ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:22:02 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (6.6ms)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:22:11 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (8.4ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:22:12 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (7.4ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search_audioguides.json?exhibition=4" for 127.0.0.1 at 2016-02-03 17:22:22 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"4"}
+  [1m[36mAudioguideInform Load (0.3ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (5.5ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-03 17:22:28 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.html.haml within layouts/application (2.4ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 120ms (Views: 119.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/5" for 127.0.0.1 at 2016-02-03 17:22:29 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 81ms (Views: 79.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/audioguides" for 127.0.0.1 at 2016-02-03 17:22:31 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?  [["exhibition_id", 5]]
+  Rendered audioguides/index.html.haml within layouts/application (2.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 80ms (Views: 78.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-03 17:22:37 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 80ms (Views: 78.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/audioguides" for 127.0.0.1 at 2016-02-03 17:22:39 -0600
+Processing by AudioguidesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT "audioguides".* FROM "audioguides" WHERE "audioguides"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered audioguides/index.html.haml within layouts/application (1.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 81ms (Views: 79.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_audioguides.json?exhibition=4" for 127.0.0.1 at 2016-02-03 17:23:30 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"4"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (6.5ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_audioguides.json?exhibition=3" for 127.0.0.1 at 2016-02-03 17:23:33 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"3"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (6.7ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_audioguides.json?exhibition=2" for 127.0.0.1 at 2016-02-03 17:23:37 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"2"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC[0m
+  [1m[35mAudioguide Load (0.1ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 15]]
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (6.8ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_audioguides.json?exhibition=2&search=english" for 127.0.0.1 at 2016-02-03 17:23:48 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"2", "search"=>"english"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC[0m
+  Rendered audioguide_informs/search.json.jbuilder (149.0ms)
+Completed 200 OK in 152ms (Views: 150.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5&search=english" for 127.0.0.1 at 2016-02-03 17:23:51 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5", "search"=>"english"}
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC
+  Rendered audioguide_informs/search.json.jbuilder (3.1ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_audioguides.json?exhibition=3&search=english" for 127.0.0.1 at 2016-02-03 17:23:55 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"3", "search"=>"english"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC[0m
+  Rendered audioguide_informs/search.json.jbuilder (0.9ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_audioguides.json?exhibition=4&search=english" for 127.0.0.1 at 2016-02-03 17:24:01 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"4", "search"=>"english"}
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC
+  Rendered audioguide_informs/search.json.jbuilder (4.3ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/4/audioguides/14/audioguide_informs" for 127.0.0.1 at 2016-02-03 17:24:59 -0600
+Processing by AudioguideInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "audioguide_id"=>"14"}
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" WHERE "audioguide_informs"."audioguide_id" = ?  [["audioguide_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", "14"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered audioguide_informs/index.html.haml within layouts/application (9.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 93ms (Views: 90.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/search_audioguides.json?exhibition=4&search=english" for 127.0.0.1 at 2016-02-03 17:25:17 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"4", "search"=>"english"}
+  [1m[35mAudioguideInform Load (0.1ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC
+  Rendered audioguide_informs/search.json.jbuilder (17.0ms)
+Completed 200 OK in 56ms (Views: 39.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5&search=english" for 127.0.0.1 at 2016-02-03 17:25:30 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5", "search"=>"english"}
+  [1m[36mAudioguideInform Load (0.2ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC[0m
+  Rendered audioguide_informs/search.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:26:38 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs"  ORDER BY created_at DESC
+  [1m[36mAudioguide Load (0.4ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  [1m[35mAudioguide Load (0.3ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (86.9ms)
+Completed 200 OK in 90ms (Views: 87.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/search_audioguides.json?exhibition=5&search=english" for 127.0.0.1 at 2016-02-03 17:27:45 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition"=>"5", "search"=>"english"}
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC
+  Rendered audioguide_informs/search.json.jbuilder (4.6ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=5&search=english" for 127.0.0.1 at 2016-02-03 17:27:54 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5", "search"=>"english"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC[0m
+  Rendered piece_informs/search.json.jbuilder (12.9ms)
+Completed 200 OK in 18ms (Views: 14.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search_pieces.json?exhibition=4&search=english" for 127.0.0.1 at 2016-02-03 17:28:00 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"4", "search"=>"english"}
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC
+  Rendered piece_informs/search.json.jbuilder (3.3ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=4" for 127.0.0.1 at 2016-02-03 17:28:11 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"4"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs"  ORDER BY created_at DESC[0m
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered piece_informs/search.json.jbuilder (19.9ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-03 17:28:30 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (9.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 186ms (Views: 180.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-03 17:29:26 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mExhibition Load (0.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (3.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 217ms (Views: 175.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/exhibitions/4/pieces" for 127.0.0.1 at 2016-02-03 17:29:27 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.4ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.html.haml within layouts/application (15.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 143ms (Views: 125.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs" for 127.0.0.1 at 2016-02-03 17:29:32 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[36mPiece Load (0.2ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs" WHERE "piece_informs"."piece_id" = ?  [["piece_id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (17.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 143ms (Views: 135.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/exhibitions/4/pieces/7/piece_informs" for 127.0.0.1 at 2016-02-03 17:29:37 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"7"}
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mPieceInform Load (0.1ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" WHERE "piece_informs"."piece_id" = ?[0m  [["piece_id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36mExhibition Load (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (4.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 99ms (Views: 97.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs" for 127.0.0.1 at 2016-02-03 17:29:43 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[36mPiece Load (0.1ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPieceInform Load (0.1ms)[0m  SELECT "piece_informs".* FROM "piece_informs" WHERE "piece_informs"."piece_id" = ?  [["piece_id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mExhibition Load (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (7.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 83ms (Views: 80.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions/4/pieces/7/piece_informs" for 127.0.0.1 at 2016-02-03 17:29:50 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"7"}
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mPieceInform Load (0.1ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" WHERE "piece_informs"."piece_id" = ?[0m  [["piece_id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "7"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (4.2ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 127ms (Views: 124.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/exhibitions/5" for 127.0.0.1 at 2016-02-03 17:29:53 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered exhibitions/show.html.haml within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 68ms (Views: 67.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/pieces" for 127.0.0.1 at 2016-02-03 17:29:54 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[36mExhibition Load (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?  [["exhibition_id", 5]]
+  Rendered pieces/index.html.haml within layouts/application (2.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 88ms (Views: 86.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions/5/pieces/6/piece_informs" for 127.0.0.1 at 2016-02-03 17:29:57 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"5", "piece_id"=>"6"}
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mPieceInform Load (0.1ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" WHERE "piece_informs"."piece_id" = ?[0m  [["piece_id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "6"]]
+  [1m[36mExhibition Load (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "6"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 5]]
+  Rendered piece_informs/index.html.haml within layouts/application (3.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 84ms (Views: 82.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/exhibitions.json" for 127.0.0.1 at 2016-02-03 17:30:11 -0600
+Processing by ExhibitionsController#index as JSON
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.json.jbuilder (3.4ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=4" for 127.0.0.1 at 2016-02-03 17:30:13 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"4"}
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL
+  Rendered piece_informs/search.json.jbuilder (14.3ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=4" for 127.0.0.1 at 2016-02-03 17:30:15 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"4"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL[0m
+  Rendered piece_informs/search.json.jbuilder (0.8ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=5&search=english" for 127.0.0.1 at 2016-02-03 17:30:52 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5", "search"=>"english"}
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL AND (language LIKE '%english%')  ORDER BY created_at DESC
+  Rendered piece_informs/search.json.jbuilder (1.1ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:30:59 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL[0m
+  Rendered piece_informs/search.json.jbuilder (6.1ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:33:07 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[35mPieceInform Load (0.1ms)[0m  SELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL
+  Rendered piece_informs/search.json.jbuilder (8.2ms)
+Completed 200 OK in 13ms (Views: 9.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/search_pieces.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:33:08 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[36mPieceInform Load (0.3ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL[0m
+  Rendered piece_informs/search.json.jbuilder (2.8ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search_pieces.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:33:09 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[35mPieceInform Load (0.1ms)[0m  SELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL
+  Rendered piece_informs/search.json.jbuilder (1.8ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/search_pieces.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:33:10 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL[0m
+  Rendered piece_informs/search.json.jbuilder (3.6ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/exhibitions.json" for 127.0.0.1 at 2016-02-03 17:33:11 -0600
+Processing by ExhibitionsController#index as JSON
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.json.jbuilder (4.3ms)
+Completed 200 OK in 18ms (Views: 12.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/exhibitions.json" for 127.0.0.1 at 2016-02-03 17:33:12 -0600
+Processing by ExhibitionsController#index as JSON
+  [1m[36mExhibition Load (0.2ms)[0m  [1mSELECT "exhibitions".* FROM "exhibitions"[0m
+  Rendered exhibitions/index.json.jbuilder (3.9ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition=5" for 127.0.0.1 at 2016-02-03 17:33:14 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition"=>"5"}
+  [1m[35mPieceInform Load (0.2ms)[0m  SELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" IS NULL
+  Rendered piece_informs/search.json.jbuilder (1.6ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_pieces.json?exhibition_id=5" for 127.0.0.1 at 2016-02-03 17:33:46 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" = 5[0m
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered piece_informs/search.json.jbuilder (17.4ms)
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/search_pieces.json?exhibition_id=4" for 127.0.0.1 at 2016-02-03 17:33:50 -0600
+Processing by PieceInformsController#search as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mPieceInform Load (0.2ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" INNER JOIN "pieces" ON "pieces"."id" = "piece_informs"."piece_id" WHERE "pieces"."exhibition_id" = 4[0m
+  [1m[35mPiece Load (0.2ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPiece Load (0.1ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 7]]
+  Rendered piece_informs/search.json.jbuilder (9.4ms)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/search_audioguides.json?exhibition_id=4" for 127.0.0.1 at 2016-02-03 17:33:58 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mAudioguideInform Load (0.1ms)[0m  [1mSELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" = 4[0m
+  [1m[35mAudioguide Load (0.4ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (22.5ms)
+Completed 200 OK in 32ms (Views: 25.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/search_audioguides.json?exhibition_id=5" for 127.0.0.1 at 2016-02-03 17:34:04 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition_id"=>"5"}
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" = 5
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 15]]
+  Rendered audioguide_informs/search.json.jbuilder (6.0ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/search_audioguides.json?exhibition_id=4" for 127.0.0.1 at 2016-02-03 17:34:09 -0600
+Processing by AudioguideInformsController#search as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mAudioguideInform Load (0.2ms)[0m  SELECT "audioguide_informs".* FROM "audioguide_informs" INNER JOIN "audioguides" ON "audioguides"."id" = "audioguide_informs"."audioguide_id" WHERE "audioguides"."exhibition_id" = 4
+  [1m[36mAudioguide Load (0.1ms)[0m  [1mSELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1[0m  [["id", 14]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "audioguides".* FROM "audioguides" WHERE "audioguides"."id" = ? LIMIT 1  [["id", 14]]
+  Rendered audioguide_informs/search.json.jbuilder (5.4ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.3ms)

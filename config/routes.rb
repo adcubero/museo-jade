@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :items
   resources :exhibitions do
     resources :exhibition_images
-    resources :audioguides
+    resources :audioguides do
+      resources :audioguide_informs
+    end
     resources :exhibition_informations
     resources :pieces do
       resources :piece_informs
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'search_exhibitions' => 'exhibition_informations#search'
   get 'search_pieces' => 'piece_informs#search'
-
+  get 'search_audioguides' => 'audioguide_informs#search'
 
 
   root :to => redirect('exhibitions')

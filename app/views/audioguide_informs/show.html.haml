@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @audioguide_inform.name
+%p
+  %b Description:
+  = @audioguide_inform.description
+%p
+  %b Text:
+  = @audioguide_inform.text
+%p
+  %b Audioguide:
+  = @audioguide_inform.audioguide
+
+= link_to 'Edit', edit_audioguide_inform_path(@audioguide_inform)
+\|
+= link_to 'Back', audioguide_informs_path

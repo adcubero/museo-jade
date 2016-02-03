@@ -1,0 +1,25 @@
+= form_for @audioguide_inform, @path do |f|
+  - if @audioguide_inform.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@audioguide_inform.errors.count, "error")} prohibited this audioguide_inform from being saved:"
+      %ul
+        - @audioguide_inform.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :text
+    = f.text_area :text
+  .field
+    = f.label :audioguide
+    = f.text_field :audioguide
+  .field
+    = f.label :language
+    = f.select(:language, [['Inglés', 'english']]) 
+  .actions
+    = f.submit 'Save'

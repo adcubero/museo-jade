@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202002853) do
+ActiveRecord::Schema.define(version: 20160203225021) do
+
+  create_table "audioguide_informs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.text     "text"
+    t.string   "language"
+    t.integer  "audioguide_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "audioguide_informs", ["audioguide_id"], name: "index_audioguide_informs_on_audioguide_id"
 
   create_table "audioguides", force: :cascade do |t|
     t.string   "name"
