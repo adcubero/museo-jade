@@ -6,6 +6,12 @@ class PieceInformsController < ApplicationController
   def index
     @piece = Piece.find(params[:piece_id])
     @piece_informs = @piece.piece_informs
+
+    if params[:search]
+      @piece_informs = PieceInform.search(params[:search]).order("created_at DESC")
+    else
+      @piece_informs = PieceInform.all.order('created_at DESC')
+    end
   end
 
   # GET /piece_informs/1

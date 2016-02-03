@@ -6,6 +6,13 @@ class ExhibitionInformationsController < ApplicationController
   def index
     @exhibition = Exhibition.find(params[:exhibition_id])
     @exhibition_informations = @exhibition.exhibition_informations
+
+    if params[:search]
+      @exhibition_informations = ExhibitionInformation.search(params[:search]).order("created_at DESC")
+    else
+      @exhibition_informations = ExhibitionInformation.all.order('created_at DESC')
+    end
+
   end
 
   # GET /exhibition_informations/1
@@ -76,6 +83,6 @@ class ExhibitionInformationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exhibition_information_params
-      params.require(:exhibition_information).permit(:name, :description, :miniDescription, :language, :exhibition_id)
+      params.require(:exhibition_information).permit(:name, :description, :miniDescription, :language, :exhibition_id, :search)
     end
 end

@@ -41518,3 +41518,581 @@ Processing by PieceInformsController#index as JSON
   [1m[36mPieceInform Load (1.1ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" WHERE "piece_informs"."piece_id" = ?[0m  [["piece_id", 5]]
   Rendered piece_informs/index.json.jbuilder (158.2ms)
 Completed 200 OK in 166ms (Views: 163.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/exhibitions/" for 127.0.0.1 at 2016-02-02 18:45:03 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.5ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (88.0ms)
+Completed 200 OK in 1623ms (Views: 1458.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-02 18:45:33 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (0.8ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (9.6ms)
+Completed 200 OK in 461ms (Views: 331.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 18:45:54 -0600
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (2.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.5ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (121.7ms)
+Completed 200 OK in 744ms (Views: 645.0ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations/new" for 127.0.0.1 at 2016-02-02 18:48:20 -0600
+Processing by ExhibitionInformationsController#new as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[36mExhibition Load (2.6ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/_form.html.haml (245.5ms)
+  Rendered exhibition_informations/new.html.haml within layouts/application (380.5ms)
+Completed 200 OK in 1342ms (Views: 1333.5ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 18:48:25 -0600
+Processing by ExhibitionInformationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NIsqWOVD25hsSkYYDgqIsXqPqLaOPqUleaREnHIQdygV4k+Fm8IOTulNpJQ6CSunmHj0YQFCQEeY288SRTGDhw==", "exhibition_information"=>{"name"=>"", "description"=>"", "miniDescription"=>"", "language"=>"english"}, "commit"=>"Save", "exhibition_id"=>"4"}
+  [1m[35mExhibition Load (9.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (10.3ms)[0m  INSERT INTO "exhibition_informations" ("name", "description", "miniDescription", "language", "exhibition_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["name", ""], ["description", ""], ["miniDescription", ""], ["language", "english"], ["exhibition_id", 4], ["created_at", "2016-02-03 00:48:25.453754"], ["updated_at", "2016-02-03 00:48:25.453754"]]
+  [1m[36m (71.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/exhibitions/4/exhibition_informations
+Completed 302 Found in 119ms (ActiveRecord: 90.7ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 18:48:25 -0600
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.7ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  [1m[35mExhibition Load (1.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (56.3ms)
+Completed 200 OK in 840ms (Views: 823.3ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:49:12 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (10.6ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (47.3ms)
+Completed 200 OK in 96ms (Views: 80.3ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:50:19 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (2.8ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (4.7ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (8.1ms)
+Completed 200 OK in 40ms (Views: 29.3ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:50:56 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (5.4ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (8.1ms)
+Completed 200 OK in 32ms (Views: 22.7ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 18:53:55 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.6ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (62.0ms)
+Completed 200 OK in 1317ms (Views: 1064.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/audioguides.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:56 -0600
+
+
+Started GET "/assets/events.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:56 -0600
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:56 -0600
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:56 -0600
+
+
+Started GET "/assets/exhibition_images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/exhibition_informations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/myCSS.self-a4ab19d73399adbb8a03466ad4c9419ee3c6eb9bdc1ec8ecec2b65278e159ce8.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/piece_informs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/tickets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/audioguides.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/events.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/exhibition_images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/exhibition_informations.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/piece_informs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/tickets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-02-02 18:53:57 -0600
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:54:20 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (4.6ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (31.5ms)
+Completed 200 OK in 65ms (Views: 55.2ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:56:13 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.4ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (4.0ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (6.9ms)
+Completed 200 OK in 34ms (Views: 23.7ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations" for 127.0.0.1 at 2016-02-02 18:56:53 -0600
+Processing by ExhibitionInformationsController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (9.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.4ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.html.haml within layouts/application (7.4ms)
+Completed 200 OK in 522ms (Views: 505.4ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:58:11 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (4.9ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (1.3ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (11.3ms)
+Completed 200 OK in 50ms (Views: 36.3ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 18:58:40 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (1.7ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (2.7ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (10.2ms)
+Completed 200 OK in 43ms (Views: 27.5ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:01:52 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.8ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (3.0ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE "exhibition_informations"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered exhibition_informations/index.json.jbuilder (66.6ms)
+Completed 200 OK in 426ms (Views: 104.4ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:03:30 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.9ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (47.7ms)
+Completed 200 OK in 418ms (Views: 91.2ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:12:05 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.7ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (3.2ms)
+Completed 200 OK in 32ms (Views: 26.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:12:54 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (4.5ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.8ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (8.6ms)
+Completed 200 OK in 36ms (Views: 27.3ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:15:01 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.8ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.6ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (42.5ms)
+Completed 200 OK in 407ms (Views: 88.4ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:17:59 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (6.2ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.7ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (4.6ms)
+Completed 200 OK in 45ms (Views: 28.2ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:19:52 -0600
+Processing by ExhibitionInformationsController#create as JSON
+  Parameters: {"search"=>"spanish", "exhibition_id"=>"4", "exhibition_information"=>{}}
+Can't verify CSRF token authenticity
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: exhibition_information):
+  app/controllers/exhibition_informations_controller.rb:87:in `exhibition_information_params'
+  app/controllers/exhibition_informations_controller.rb:41:in `create'
+
+
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (23.5ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.8ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.3ms)
+  Rendered /home/adrian/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (122.4ms)
+Cannot render console with content type application/jsonAllowed content types: [#<Mime::Type:0x007f4715c24d00 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007f4715c24378 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007f4715c149a0 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:24:48 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (1.6ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (10.3ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (13.1ms)
+Completed 200 OK in 34ms (Views: 12.3ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/tickets" for 127.0.0.1 at 2016-02-02 19:25:23 -0600
+Processing by TicketsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "tickets"
+  Rendered tickets/index.html.haml within layouts/application (17.4ms)
+Completed 200 OK in 932ms (Views: 852.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tickets?utf8=%E2%9C%93&search=2&commit=Buscar" for 127.0.0.1 at 2016-02-02 19:25:30 -0600
+Processing by TicketsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"2", "commit"=>"Buscar"}
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE (id LIKE '%2%')[0m
+  Rendered tickets/index.html.haml within layouts/application (31.4ms)
+Completed 200 OK in 421ms (Views: 417.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tickets?utf8=%E2%9C%93&search=21&commit=Buscar" for 127.0.0.1 at 2016-02-02 19:25:50 -0600
+Processing by TicketsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"21", "commit"=>"Buscar"}
+  [1m[35m (4.2ms)[0m  SELECT COUNT(*) FROM "tickets" WHERE (id LIKE '%21%')
+  [1m[36mTicket Load (0.5ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC[0m
+  Rendered tickets/index.html.haml within layouts/application (45.1ms)
+Completed 200 OK in 467ms (Views: 459.8ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/tickets.json?utf8=%E2%9C%93&search=21&commit=Buscar" for 127.0.0.1 at 2016-02-02 19:26:05 -0600
+Processing by TicketsController#index as JSON
+  Parameters: {"utf8"=>"✓", "search"=>"21", "commit"=>"Buscar"}
+  [1m[35mTicket Load (4.4ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC
+  Rendered tickets/index.json.jbuilder (16.6ms)
+Completed 200 OK in 89ms (Views: 82.3ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/tickets?utf8=%E2%9C%93&search=21" for 127.0.0.1 at 2016-02-02 19:26:33 -0600
+Processing by TicketsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"21"}
+  [1m[36m (6.4ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE (id LIKE '%21%')[0m
+  [1m[35mTicket Load (5.9ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC
+  Rendered tickets/index.html.haml within layouts/application (29.8ms)
+Completed 200 OK in 577ms (Views: 562.9ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/tickets?utf8=%E2%9C%93&search=21&commit=Buscar" for 127.0.0.1 at 2016-02-02 19:26:47 -0600
+Processing by TicketsController#index as HTML
+  Parameters: {"utf8"=>"✓", "search"=>"21", "commit"=>"Buscar"}
+  [1m[36m (6.3ms)[0m  [1mSELECT COUNT(*) FROM "tickets" WHERE (id LIKE '%21%')[0m
+  [1m[35mTicket Load (0.5ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC
+  Rendered tickets/index.html.haml within layouts/application (18.9ms)
+Completed 200 OK in 535ms (Views: 526.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/tickets.json?utf8=%E2%9C%93&search=21&commit=Buscar" for 127.0.0.1 at 2016-02-02 19:26:55 -0600
+Processing by TicketsController#index as JSON
+  Parameters: {"utf8"=>"✓", "search"=>"21", "commit"=>"Buscar"}
+  [1m[36mTicket Load (10.2ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC[0m
+  Rendered tickets/index.json.jbuilder (20.8ms)
+Completed 200 OK in 37ms (Views: 24.7ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/tickets.json?utf8=%E2%9C%93&search=21" for 127.0.0.1 at 2016-02-02 19:27:00 -0600
+Processing by TicketsController#index as JSON
+  Parameters: {"utf8"=>"✓", "search"=>"21"}
+  [1m[35mTicket Load (7.0ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC
+  Rendered tickets/index.json.jbuilder (10.2ms)
+Completed 200 OK in 39ms (Views: 30.6ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/tickets.json?search=21" for 127.0.0.1 at 2016-02-02 19:27:04 -0600
+Processing by TicketsController#index as JSON
+  Parameters: {"search"=>"21"}
+  [1m[36mTicket Load (0.8ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC[0m
+  Rendered tickets/index.json.jbuilder (10.0ms)
+Completed 200 OK in 41ms (Views: 37.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tickets.json?search=2" for 127.0.0.1 at 2016-02-02 19:27:09 -0600
+Processing by TicketsController#index as JSON
+  Parameters: {"search"=>"2"}
+  [1m[35mTicket Load (6.1ms)[0m  SELECT "tickets".* FROM "tickets" WHERE (id LIKE '%2%')  ORDER BY created_at DESC
+  Rendered tickets/index.json.jbuilder (14.9ms)
+Completed 200 OK in 40ms (Views: 31.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/tickets.json?search=21" for 127.0.0.1 at 2016-02-02 19:27:12 -0600
+Processing by TicketsController#index as JSON
+  Parameters: {"search"=>"21"}
+  [1m[36mTicket Load (1.1ms)[0m  [1mSELECT "tickets".* FROM "tickets" WHERE (id LIKE '%21%')  ORDER BY created_at DESC[0m
+  Rendered tickets/index.json.jbuilder (5.1ms)
+Completed 200 OK in 32ms (Views: 26.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json?search=21" for 127.0.0.1 at 2016-02-02 19:28:03 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"search"=>"21", "exhibition_id"=>"4"}
+  [1m[35mExhibition Load (3.9ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (4.5ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%21%')  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (6.5ms)
+Completed 200 OK in 39ms (Views: 25.6ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json?search=21" for 127.0.0.1 at 2016-02-02 19:28:18 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"search"=>"21", "exhibition_id"=>"4"}
+  [1m[35mExhibition Load (2.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.6ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%21%')  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (3.9ms)
+Completed 200 OK in 34ms (Views: 27.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json?search=spanish" for 127.0.0.1 at 2016-02-02 19:28:50 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"search"=>"spanish", "exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (3.1ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%spanish%')  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (5.6ms)
+Completed 200 OK in 36ms (Views: 21.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json" for 127.0.0.1 at 2016-02-02 19:31:52 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (0.8ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations"  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (9.5ms)
+Completed 200 OK in 27ms (Views: 22.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/exhibitions/4/exhibition_informations.json?search=spanish" for 127.0.0.1 at 2016-02-02 19:32:37 -0600
+Processing by ExhibitionInformationsController#index as JSON
+  Parameters: {"search"=>"spanish", "exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mExhibitionInformation Load (1.0ms)[0m  [1mSELECT "exhibition_informations".* FROM "exhibition_informations" WHERE (language LIKE '%spanish%')  ORDER BY created_at DESC[0m
+  Rendered exhibition_informations/index.json.jbuilder (9.3ms)
+Completed 200 OK in 55ms (Views: 46.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-02-02 19:34:12 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/exhibitions" for 127.0.0.1 at 2016-02-02 19:34:12 -0600
+Processing by ExhibitionsController#index as HTML
+  [1m[35mExhibition Load (0.5ms)[0m  SELECT "exhibitions".* FROM "exhibitions"
+  Rendered exhibitions/index.html.haml within layouts/application (49.7ms)
+Completed 200 OK in 1061ms (Views: 952.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/audioguides.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/events.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/items.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/exhibitions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/exhibition_informations.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/exhibition_images.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/myCSS.self-a4ab19d73399adbb8a03466ad4c9419ee3c6eb9bdc1ec8ecec2b65278e159ce8.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/piece_informs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/pieces.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/scaffolds.self-fcccf9ba07fe01566dd104b4cac5db992ab12b54111f662fc56510603a267ddd.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/tickets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:14 -0600
+
+
+Started GET "/assets/audioguides.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/events.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/exhibition_images.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/exhibition_informations.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/exhibitions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/items.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/piece_informs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/pieces.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/tickets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-02-02 19:34:15 -0600
+
+
+Started GET "/exhibitions/4" for 127.0.0.1 at 2016-02-02 19:34:21 -0600
+Processing by ExhibitionsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mExhibition Load (4.0ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered exhibitions/show.html.haml within layouts/application (19.3ms)
+Completed 200 OK in 429ms (Views: 391.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/exhibitions/4/pieces" for 127.0.0.1 at 2016-02-02 19:34:23 -0600
+Processing by PiecesController#index as HTML
+  Parameters: {"exhibition_id"=>"4"}
+  [1m[35mExhibition Load (0.3ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mPiece Load (0.6ms)[0m  [1mSELECT "pieces".* FROM "pieces" WHERE "pieces"."exhibition_id" = ?[0m  [["exhibition_id", 4]]
+  Rendered pieces/index.html.haml within layouts/application (121.1ms)
+Completed 200 OK in 744ms (Views: 635.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs" for 127.0.0.1 at 2016-02-02 19:34:27 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[35mPiece Load (0.7ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mPieceInform Load (0.7ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs"  ORDER BY created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mPiece Load (0.2ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.2ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (101.4ms)
+Completed 200 OK in 468ms (Views: 446.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs?search=aa" for 127.0.0.1 at 2016-02-02 19:34:43 -0600
+Processing by PieceInformsController#index as HTML
+  Parameters: {"search"=>"aa", "exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[35mPiece Load (1.9ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mPieceInform Load (5.4ms)[0m  [1mSELECT "piece_informs".* FROM "piece_informs" WHERE (language LIKE '%aa%')  ORDER BY created_at DESC[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", "5"]]
+  [1m[36mExhibition Load (0.3ms)[0m  [1mSELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mPiece Load (0.3ms)[0m  SELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "exhibitions".* FROM "exhibitions" WHERE "exhibitions"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered piece_informs/index.html.haml within layouts/application (50.7ms)
+Completed 200 OK in 412ms (Views: 393.2ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/exhibitions/4/pieces/5/piece_informs.json?search=aa" for 127.0.0.1 at 2016-02-02 19:34:49 -0600
+Processing by PieceInformsController#index as JSON
+  Parameters: {"search"=>"aa", "exhibition_id"=>"4", "piece_id"=>"5"}
+  [1m[36mPiece Load (2.4ms)[0m  [1mSELECT  "pieces".* FROM "pieces" WHERE "pieces"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mPieceInform Load (0.6ms)[0m  SELECT "piece_informs".* FROM "piece_informs" WHERE (language LIKE '%aa%')  ORDER BY created_at DESC
+  Rendered piece_informs/index.json.jbuilder (11.4ms)
+Completed 200 OK in 75ms (Views: 67.0ms | ActiveRecord: 2.9ms)
